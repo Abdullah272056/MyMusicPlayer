@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 
+import android.media.MediaMetadataRetriever;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -29,11 +31,13 @@ public class MainActivity extends AppCompatActivity {
     String[]items;
     ListView listView;
     public static final int PERMISSION_READ = 0;
+    ArrayList<File> arrayList1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView=findViewById(R.id.listView);
+        arrayList1=new ArrayList<>();
         runTimePermission();
 
 
@@ -47,7 +51,6 @@ Dexter.withContext(MainActivity.this).withPermissions(Manifest.permission.READ_E
             public void onPermissionsChecked(MultiplePermissionsReport multiplePermissionsReport) {
                 displaySong();
             }
-
             @Override
             public void onPermissionRationaleShouldBeShown(List<PermissionRequest> list, PermissionToken permissionToken) {
             permissionToken.continuePermissionRequest();
@@ -57,9 +60,8 @@ Dexter.withContext(MainActivity.this).withPermissions(Manifest.permission.READ_E
 
 
     ArrayList<File> findSong(File file){
-        ArrayList<File> arrayList=new ArrayList<>();
+        ArrayList<File>  arrayList=new ArrayList<>();
         File[] files=file.listFiles();
-
         for (File singleFile:files){
             if (singleFile.isDirectory() && !singleFile.isHidden()){
                 arrayList.addAll(findSong(singleFile));
@@ -69,6 +71,8 @@ Dexter.withContext(MainActivity.this).withPermissions(Manifest.permission.READ_E
                 }
             }
         }
+
+        arrayList1.addAll(arrayList);
         return arrayList;
     }
 
@@ -86,9 +90,12 @@ Dexter.withContext(MainActivity.this).withPermissions(Manifest.permission.READ_E
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(MainActivity.this, "sss", Toast.LENGTH_SHORT).show();
 
                 String songName= (String) listView.getItemAtPosition(position);
+                String time= createTime((int) arrayList1.get(position).getTotalSpace());
+
+                Toast.makeText(MainActivity.this, String.valueOf(time), Toast.LENGTH_SHORT).show();
+
 
 //                startActivity(new Intent(MainActivity.this,PlayerActivity.class)
 //                        .putExtra("songs",mySongs)
@@ -122,10 +129,37 @@ Dexter.withContext(MainActivity.this).withPermissions(Manifest.permission.READ_E
             songNameTextView.setSelected(true);
             songNameTextView.setText(items[position]);
 
-//            durationTextView.setSelected(true);
-//            durationTextView.setText(items[position]);
+            ArrayList<File> mySongs=findSong(Environment.getExternalStorageDirectory());
+            Uri uri=Uri.parse(mySongs.get(position).toString());
+
+            MediaMetadataRetriever mmr = new MediaMetadataRetriever();
+            mmr.setDataSource(MainActivity.this, uri);
+            String duration = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+            String title =  mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
+
+            int millSecond = Integer.parseInt(duration);
+
+            durationTextView.setSelected(true);
+            durationTextView.setText(title +"\t"+createTime(millSecond));
 
             return myView ;
         }
+    }
+
+
+    //time conversion int value to time format
+    public String createTime(int duration) {
+        String time="";
+        int dur = (int) duration;
+        int hrs = (dur / 3600000);
+        int mns = (dur / 60000) % 60000;
+        int scs = dur % 60000 / 1000;
+
+        if (hrs > 0) {
+            time = String.format("%02d:%02d:%02d", hrs, mns, scs);
+        } else {
+            time = String.format("%02d:%02d", mns, scs);
+        }
+        return time;
     }
 }
