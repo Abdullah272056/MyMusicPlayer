@@ -136,6 +136,7 @@ Dexter.withContext(MainActivity.this).withPermissions(Manifest.permission.READ_E
             mmr.setDataSource(MainActivity.this, uri);
             String duration = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
             String title =  mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
+            String image =  mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_HAS_IMAGE);
 
             int millSecond = Integer.parseInt(duration);
 
