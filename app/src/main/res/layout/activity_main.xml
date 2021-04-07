@@ -124,7 +124,7 @@
 
     </LinearLayout>
 
-<LinearLayout
+    <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="0dp"
     android:layout_weight=".6">
@@ -132,7 +132,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="13dp"
-        android:text="Bon Jovi - Janie, Don't Take Your Love To Town"
+        android:text="Bon Jovi - Janie Don't Take Your Love To Town"
         android:textAlignment="center"
         android:id="@+id/song_name_id"
         android:layout_marginLeft="20dp"
@@ -152,6 +152,7 @@
         android:weightSum="3"
         >
         <androidx.cardview.widget.CardView
+            android:id="@+id/prevButtonId"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_weight="1"
@@ -166,6 +167,7 @@
                 />
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/playButtonId"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_weight="1"
@@ -180,6 +182,7 @@
                 />
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/nextButtonId"
             android:layout_width="0dp"
             android:layout_height="80dp"
             android:layout_weight="1"
@@ -222,14 +225,15 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="3dp"
-        >
+        />
 
-    </View>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/main_rv"
+        android:layout_weight="3.5"
+     />
 
-<androidx.recyclerview.widget.RecyclerView
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:id="@+id/main_rv"
-    android:layout_weight="3.5"
-   />
+
 </LinearLayout>
