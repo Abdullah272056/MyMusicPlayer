@@ -16,6 +16,8 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listView=findViewById(R.id.listView);
         runTimePermission();
+
+
 
     }
 
@@ -44,6 +48,23 @@ public class MainActivity extends AppCompatActivity {
                         permissionToken.continuePermissionRequest();
                     }
                 }).check();
+    }
+
+
+    ArrayList<File> findSong(File file){
+        ArrayList<File> arrayList=new ArrayList<>();
+        File[] files=file.listFiles();
+
+        for (File singleFile:files){
+            if (singleFile.isDirectory() && !singleFile.isHidden()){
+                arrayList.addAll(findSong(singleFile));
+            }else {
+                if (singleFile.getName().endsWith(".mp3")  || singleFile.getName().endsWith(".wav")){
+                    arrayList.add(singleFile);
+                }
+            }
+        }
+        return arrayList;
     }
 
 
