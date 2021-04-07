@@ -47,5 +47,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    class CustomAdapter extends BaseAdapter {
+        @Override
+        public int getCount() {
+            return items.length;
+        }
 
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View myView=getLayoutInflater().inflate(R.layout.list_item,null);
+            TextView songNameTextView=myView.findViewById(R.id.songNameTextViewId);
+            TextView durationTextView=myView.findViewById(R.id.songDurationTextViewId);
+            songNameTextView.setSelected(true);
+            songNameTextView.setText(items[position]);
+
+//            durationTextView.setSelected(true);
+//            durationTextView.setText(items[position]);
+
+            return myView ;
+        }
+    }
 }
