@@ -3,12 +3,16 @@ package com.example.mymusicplayer;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 .withListener(new MultiplePermissionsListener() {
                     @Override
                     public void onPermissionsChecked(MultiplePermissionsReport multiplePermissionsReport) {
-                        //displaySong();
+                        displaySong();
                     }
 
                     @Override
@@ -67,7 +71,32 @@ public class MainActivity extends AppCompatActivity {
         return arrayList;
     }
 
+    void displaySong(){
+        final ArrayList<File> mySongs=findSong(Environment.getExternalStorageDirectory());
+        items=new String[mySongs.size()];
+        if (mySongs.size()>0){
+            for (int i=0;i<mySongs.size();i++){
+                items[i]=mySongs.get(i).getName().toString().replace(".mp3","").replace(".wav","");
+            }
+        }
 
+        CustomAdapter customAdapter=new CustomAdapter();
+        listView.setAdapter(customAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, "sss", Toast.LENGTH_SHORT).show();
+
+                String songName= (String) listView.getItemAtPosition(position);
+
+//                startActivity(new Intent(MainActivity.this,PlayerActivity.class)
+//                        .putExtra("songs",mySongs)
+//                        .putExtra("songName",songName)
+//                        .putExtra("pos",position));
+
+            }
+        });
+    }
     class CustomAdapter extends BaseAdapter {
         @Override
         public int getCount() {
