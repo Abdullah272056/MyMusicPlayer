@@ -13,8 +13,8 @@
     <LinearLayout
         android:gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="6.5">
+        android:layout_height="320dp"
+        >
         <RelativeLayout
 
             android:layout_gravity="center"
@@ -125,10 +125,16 @@
     </LinearLayout>
 
     <LinearLayout
+     android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:layout_weight=".6">
+    android:layout_weight="1">
     <TextView
+        android:gravity="center"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:textStyle="italic"
+        android:singleLine="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="13dp"
@@ -145,7 +151,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2.2"
+        android:layout_weight="1.6"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:orientation="horizontal"
@@ -199,8 +205,8 @@
 
     </LinearLayout>
 
-
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
