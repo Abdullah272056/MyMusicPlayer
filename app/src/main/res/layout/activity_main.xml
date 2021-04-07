@@ -227,13 +227,14 @@
         android:layout_marginBottom="3dp"
         />
 
-    <androidx.recyclerview.widget.RecyclerView
+
+    <ListView
         android:layout_margin="5dp"
+        android:id="@+id/listView"
+        android:dividerHeight="10sp"
+        android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:id="@+id/main_rv"
-        android:layout_weight="3.5"
-     />
-
+        android:layout_weight="3.5"/>
 
 </LinearLayout>
