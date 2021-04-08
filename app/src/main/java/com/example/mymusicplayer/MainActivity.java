@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     TextView txtSName,txtSStart,txtSStop;
     ArcSeekBar seekMusic;
     BarVisualizer visualizer;
-    ImageView imageView;
+    ImageView imageView,playImageView;
 
     String sName;
     public static final String EXTRA_NAME="song_name";
@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
         txtSStart=findViewById(R.id.sonStartTimeTextViewId);
         txtSStop=findViewById(R.id.songStopTextViewId);
         imageView=findViewById(R.id.imageViewId);
+        playImageView=findViewById(R.id.playImageViewId);
 
         seekMusic=findViewById(R.id.seekBarId);
       //  visualizer=findViewById(R.id.blast);
@@ -151,6 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
         // after one second change current time and
         // when user change seekBar progress then get current time and set textView
+
         final Handler handler=new Handler();
         final  int delay=1000;
         handler.postDelayed(new Runnable() {
@@ -167,10 +169,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (mediaPlayer.isPlaying()){
-                    btnPlay.setBackgroundResource(R.drawable.play_ic);
+                    playImageView.setImageResource(R.drawable.play_ic);
                     mediaPlayer.pause();
                 }else {
-                    btnPlay.setBackgroundResource(R.drawable.pause_ic);
+                    //playImageView.setBackgroundResource(R.drawable.pause_ic);
+                    playImageView.setImageResource(R.drawable.pause_ic);
                     mediaPlayer.start();
                 }
             }
