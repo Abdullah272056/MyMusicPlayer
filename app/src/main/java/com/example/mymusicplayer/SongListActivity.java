@@ -38,6 +38,7 @@ public class SongListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_song_list);
         listView=findViewById(R.id.listView);
         arrayList1=new ArrayList<>();
+        runTimePermission();
     }
 
     public void runTimePermission(){
@@ -98,6 +99,10 @@ public class SongListActivity extends AppCompatActivity {
         });
     }
     class CustomAdapter extends BaseAdapter {
+
+        ArrayList<File> mySongs=findSong(Environment.getExternalStorageDirectory());
+        MediaMetadataRetriever mmr = new MediaMetadataRetriever();
+
         @Override
         public int getCount() {
             return items.length;
@@ -121,17 +126,15 @@ public class SongListActivity extends AppCompatActivity {
             songNameTextView.setSelected(true);
             songNameTextView.setText(items[position]);
 
-            ArrayList<File> mySongs=findSong(Environment.getExternalStorageDirectory());
+
             Uri uri=Uri.parse(mySongs.get(position).toString());
 
-            MediaMetadataRetriever mmr = new MediaMetadataRetriever();
             mmr.setDataSource(SongListActivity.this, uri);
             String duration = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
             String title =  mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
-            String image =  mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_HAS_IMAGE);
+            //String image =  mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_HAS_IMAGE);
 
             int millSecond = Integer.parseInt(duration);
-
             durationTextView.setSelected(true);
             durationTextView.setText(title +"\t"+createTime(millSecond));
 
