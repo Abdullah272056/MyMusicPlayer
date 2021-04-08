@@ -8,6 +8,7 @@ import android.Manifest;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -33,6 +34,7 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 import com.marcinmoskala.arcseekbar.ArcSeekBar;
+import com.marcinmoskala.arcseekbar.ProgressListener;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -128,7 +130,20 @@ public class MainActivity extends AppCompatActivity {
         updateSeekBar.start();
 
 
+//        //seekMusic set Listener
+//        seekMusic.setOnProgressChangedListener(new ProgressListener() {
+//            @Override
+//            public void invoke(int i) {
+//                mediaPlayer.seekTo(i);
+//            }
+//        });
+//        // time format change and set textView
+//        String endTime=createTime(mediaPlayer.getDuration());
+//        txtSStop.setText(endTime);
 
+        // time format change and set textView
+        String endTime=createTime(mediaPlayer.getDuration());
+        txtSStop.setText(endTime);
 
         btnPlay.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -206,5 +221,19 @@ public class MainActivity extends AppCompatActivity {
         animatorSet.playTogether(animator);
         animatorSet.start();
     }
+    //time conversion int value to time format
+    public String createTime(int duration) {
+        String time="";
+        int dur = (int) duration;
+        int hrs = (dur / 3600000);
+        int mns = (dur / 60000) % 60000;
+        int scs = dur % 60000 / 1000;
 
+        if (hrs > 0) {
+            time = String.format("%02d:%02d:%02d", hrs, mns, scs);
+        } else {
+            time = String.format("%02d:%02d", mns, scs);
+        }
+        return time;
+    }
 }
