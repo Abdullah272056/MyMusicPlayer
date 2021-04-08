@@ -3,8 +3,15 @@ package com.example.mymusicplayer;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.media.MediaMetadataRetriever;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
@@ -59,5 +66,61 @@ public class SongListActivity extends AppCompatActivity {
 
         arrayList1.addAll(arrayList);
         return arrayList;
+    }
+    class CustomAdapter extends BaseAdapter {
+        @Override
+        public int getCount() {
+            return items.length;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View myView=getLayoutInflater().inflate(R.layout.list_item,null);
+            TextView songNameTextView=myView.findViewById(R.id.songNameTextViewId);
+            TextView durationTextView=myView.findViewById(R.id.songDurationTextViewId);
+            songNameTextView.setSelected(true);
+            songNameTextView.setText(items[position]);
+
+            ArrayList<File> mySongs=findSong(Environment.getExternalStorageDirectory());
+            Uri uri=Uri.parse(mySongs.get(position).toString());
+
+            MediaMetadataRetriever mmr = new MediaMetadataRetriever();
+            mmr.setDataSource(SongListActivity.this, uri);
+            String duration = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+            String title =  mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
+            String image =  mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_HAS_IMAGE);
+
+            int millSecond = Integer.parseInt(duration);
+
+            durationTextView.setSelected(true);
+            durationTextView.setText(title +"\t"+createTime(millSecond));
+
+            return myView ;
+        }
+    }
+    //time conversion int value to time format
+    public String createTime(int duration) {
+        String time="";
+        int dur = (int) duration;
+        int hrs = (dur / 3600000);
+        int mns = (dur / 60000) % 60000;
+        int scs = dur % 60000 / 1000;
+
+        if (hrs > 0) {
+            time = String.format("%02d:%02d:%02d", hrs, mns, scs);
+        } else {
+            time = String.format("%02d:%02d", mns, scs);
+        }
+        return time;
     }
 }
