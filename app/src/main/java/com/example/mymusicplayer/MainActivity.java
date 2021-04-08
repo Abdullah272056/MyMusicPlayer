@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 
 import android.media.MediaMetadataRetriever;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -12,16 +13,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gauravk.audiovisualizer.visualizer.BarVisualizer;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
 
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
+import com.marcinmoskala.arcseekbar.ArcSeekBar;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -32,11 +39,45 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     public static final int PERMISSION_READ = 0;
     ArrayList<File> arrayList1;
+
+
+    Button btnPlay,btnNext,btnPrev;
+    ImageButton btnFf,btnFr;
+    TextView txtSName,txtSStart,txtSStop;
+    ArcSeekBar seekMusic;
+    BarVisualizer visualizer;
+    ImageView imageView;
+
+    String sName;
+    public static final String EXTRA_NAME="song_name";
+    static MediaPlayer mediaPlayer;
+    int position;
+    ArrayList<File> mySongs;
+
+    Thread updateSeekBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView=findViewById(R.id.listView);
+        btnPlay=findViewById(R.id.playButtonId);
+        btnNext=findViewById(R.id.nextButtonId);
+        btnPrev=findViewById(R.id.prevButtonId);
+        btnFf=findViewById(R.id.FFButtonId);
+        btnFr=findViewById(R.id.FRButtonId);
+
+        txtSName=findViewById(R.id.songNameTextViewId);
+        txtSStart=findViewById(R.id.sonStartTimeTextViewId);
+        txtSStop=findViewById(R.id.songStopTextViewId);
+        imageView=findViewById(R.id.imageViewId);
+
+        seekMusic=findViewById(R.id.seekBarId);
+      //  visualizer=findViewById(R.id.blast);
+
+
+
+
         arrayList1=new ArrayList<>();
         runTimePermission();
 
