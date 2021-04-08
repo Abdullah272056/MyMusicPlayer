@@ -62,7 +62,6 @@
                         >
 
                         <androidx.cardview.widget.CardView
-                            android:background="@drawable/bg"
                             android:layout_width="240dp"
                             android:layout_height="240dp"
                             android:id="@+id/view2"
@@ -74,9 +73,9 @@
                             android:layout_margin="40dp"
                             >
                             <ImageView
-                                android:layout_width="222dp"
-                                android:layout_height="220dp"
-                                android:src="@drawable/bg"
+                                android:layout_width="240dp"
+                                android:layout_height="240dp"
+                                android:src="@drawable/song_img"
                                 android:id="@+id/imageViewId"
                                 android:scaleType="centerCrop"
                                 />
@@ -94,13 +93,8 @@
                             android:id="@+id/seekBarId"
                             android:rotation="180"
                             android:layout_alignParentBottom="true"
-                            app:progressColor="#E91E63"
+                            app:progressColor="#03A9F4"
                             app:thumb="@drawable/seekbar_point"/>
-
-
-
-
-
 
                     </RelativeLayout>
                     <LinearLayout

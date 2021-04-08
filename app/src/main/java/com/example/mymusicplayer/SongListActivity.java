@@ -1,18 +1,27 @@
 package com.example.mymusicplayer;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.ContentUris;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.ParcelFileDescriptor;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +33,7 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import java.io.File;
+import java.io.FileDescriptor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,11 +128,13 @@ public class SongListActivity extends AppCompatActivity {
             return 0;
         }
 
+        @RequiresApi(api = Build.VERSION_CODES.P)
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             View myView=getLayoutInflater().inflate(R.layout.list_item,null);
             TextView songNameTextView=myView.findViewById(R.id.songNameTextViewId);
             TextView durationTextView=myView.findViewById(R.id.songDurationTextViewId);
+            ImageView img=myView.findViewById(R.id.img);
             songNameTextView.setSelected(true);
             songNameTextView.setText(items[position]);
 
@@ -132,7 +144,16 @@ public class SongListActivity extends AppCompatActivity {
             mmr.setDataSource(SongListActivity.this, uri);
             String duration = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
             String title =  mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
-            //String image =  mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_HAS_IMAGE);
+             mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
+            String image =  mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_HAS_IMAGE);
+
+           Bitmap bm = StringToBitMap(image);
+            if (bm!=null){
+                img.setImageBitmap(bm);
+            //MyPhoto is image control
+            }
+
+
 
             int millSecond = Integer.parseInt(duration);
             durationTextView.setSelected(true);
@@ -155,5 +176,15 @@ public class SongListActivity extends AppCompatActivity {
             time = String.format("%02d:%02d", mns, scs);
         }
         return time;
+    }
+    public Bitmap StringToBitMap(String encodedString) {
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
+        }
     }
 }
