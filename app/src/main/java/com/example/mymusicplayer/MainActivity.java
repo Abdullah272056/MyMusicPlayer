@@ -105,6 +105,27 @@ public class MainActivity extends AppCompatActivity {
         mediaPlayer.start();
 
 
+        updateSeekBar=new Thread(){
+            @Override
+            public void run() {
+                int totalDuration=mediaPlayer.getDuration();
+                int currentPosition=0;
+                while (currentPosition<totalDuration){
+                    try {
+                        sleep(500);
+                        currentPosition=mediaPlayer.getCurrentPosition();
+                        seekMusic.setProgress(currentPosition);
+                    }catch (InterruptedException | IllegalStateException e){
+                        e.printStackTrace();
+                    }
+                }
+                super.run();
+            }
+        };
+
+        //seekMusic.setMax(mediaPlayer.getDuration());
+        seekMusic.setMaxProgress(mediaPlayer.getDuration());
+        updateSeekBar.start();
 
 
 
@@ -137,10 +158,10 @@ public class MainActivity extends AppCompatActivity {
                 btnPlay.setBackgroundResource(R.drawable.pause_ic);
                 startAnimation(imageView);
 
-                int audioSessionId=mediaPlayer.getAudioSessionId();
-                if (audioSessionId!=-1){
-                    visualizer.setAudioSessionId(audioSessionId);
-                }
+//                int audioSessionId=mediaPlayer.getAudioSessionId();
+//                if (audioSessionId!=-1){
+//                    visualizer.setAudioSessionId(audioSessionId);
+//                }
             }
         });
 
@@ -159,10 +180,12 @@ public class MainActivity extends AppCompatActivity {
                 startAnimation(imageView);
 
 
-                int audioSessionId=mediaPlayer.getAudioSessionId();
-                if (audioSessionId!=-1){
-                    visualizer.setAudioSessionId(audioSessionId);
-                }
+//                int audioSessionId=mediaPlayer.getAudioSessionId();
+//                if (audioSessionId!=-1){
+//                    visualizer.setAudioSessionId(audioSessionId);
+//                }
+
+
             }
         });
 
@@ -172,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-   
+
 
 
     // animation create
