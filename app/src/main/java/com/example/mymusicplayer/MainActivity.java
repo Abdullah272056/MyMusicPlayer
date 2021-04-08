@@ -44,10 +44,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    String[]items;
+
     ListView listView;
-    public static final int PERMISSION_READ = 0;
     ArrayList<File> arrayList1;
+
 
 
     CardView btnPlay,btnNext,btnPrev;
@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         playImageView=findViewById(R.id.playImageViewId);
 
         seekMusic=findViewById(R.id.seekBarId);
-      //  visualizer=findViewById(R.id.blast);
+        visualizer=findViewById(R.id.blast);
 
 
         arrayList1=new ArrayList<>();
@@ -198,33 +198,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mediaPlayer.stop();
-                mediaPlayer.release();
-
-                position=(position+1)%mySongs.size();
-
-                Uri uri=Uri.parse(mySongs.get(position).toString());
-                mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
-                sName=mySongs.get(position).getName();
-                txtSName.setText(sName);
-
-                txtSStop.setText(createTime(mediaPlayer.getDuration()));
-                UpdateSeekBar();
-
-                mediaPlayer.start();
-                btnPlay.setBackgroundResource(R.drawable.pause_ic);
-                startAnimation(imageView);
-
-//                int audioSessionId=mediaPlayer.getAudioSessionId();
-//                if (audioSessionId!=-1){
-//                    visualizer.setAudioSessionId(audioSessionId);
-//                }
-            }
-        });
-
         // after current song ended then next song start
         mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
@@ -233,6 +206,38 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        int audioSessionId=mediaPlayer.getAudioSessionId();
+        if (audioSessionId!=-1){
+            visualizer.setAudioSessionId(audioSessionId);
+        }
+
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer.stop();
+                mediaPlayer.release();
+                position=(position+1)%mySongs.size();
+                Uri uri=Uri.parse(mySongs.get(position).toString());
+                mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
+                sName=mySongs.get(position).getName();
+                txtSName.setText(sName);
+                txtSStop.setText(createTime(mediaPlayer.getDuration()));
+                UpdateSeekBar();
+
+                mediaPlayer.start();
+                playImageView.setImageResource(R.drawable.pause_ic);
+                startAnimation(imageView);
+
+                int audioSessionId=mediaPlayer.getAudioSessionId();
+                if (audioSessionId!=-1){
+                    visualizer.setAudioSessionId(audioSessionId);
+                }
+            }
+        });
+
+
 
         btnPrev.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -250,14 +255,14 @@ public class MainActivity extends AppCompatActivity {
                 UpdateSeekBar();
 
                 mediaPlayer.start();
-                btnPlay.setBackgroundResource(R.drawable.pause_ic);
+                playImageView.setImageResource(R.drawable.pause_ic);
                 startAnimation(imageView);
 
 
-//                int audioSessionId=mediaPlayer.getAudioSessionId();
-//                if (audioSessionId!=-1){
-//                    visualizer.setAudioSessionId(audioSessionId);
-//                }
+                int audioSessionId=mediaPlayer.getAudioSessionId();
+                if (audioSessionId!=-1){
+                    visualizer.setAudioSessionId(audioSessionId);
+                }
 
 
             }

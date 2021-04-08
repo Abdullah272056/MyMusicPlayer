@@ -260,13 +260,25 @@
                 android:layout_marginBottom="3dp"
                 />
 
-            <ListView
-                android:id="@+id/listView"
+<!--            <ListView-->
+<!--                android:id="@+id/listView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:dividerHeight="10sp"-->
+<!--                android:padding="8dp" />-->
+            <com.gauravk.audiovisualizer.visualizer.BarVisualizer
+                android:layout_marginTop="30dp"
+                xmlns:custom="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/blast"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:dividerHeight="10sp"
-                android:padding="8dp" />
+                android:layout_height="70dp"
+                custom:avDensity="0.5"
+                custom:avType="outline"
+                custom:avWidth="4dp"
+                custom:avColor="#FA0707"
+                android:layout_alignParentBottom="true"
+                custom:avSpeed="normal"/>
 
         </LinearLayout>
 
