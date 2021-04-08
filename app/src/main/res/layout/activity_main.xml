@@ -100,28 +100,41 @@
 
 
 
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/all"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_margin="30dp"
-                            android:id="@+id/all_id"
-                            />
-
-
-                        <ImageView
-                            android:layout_width="30dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/suffel"
-                            android:layout_alignParentBottom="true"
-                            android:layout_alignParentLeft="true"
-                            android:layout_margin="30dp"
-                            android:id="@+id/suffel_id"
-                            />
-
                     </RelativeLayout>
+                    <LinearLayout
+                        android:layout_marginBottom="20dp"
+                        android:layout_alignParentBottom="true"
+                        android:weightSum="2"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:gravity="left"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/ic_baseline_fast_rewind_24"
+                                android:id="@+id/all_id"
+                                />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:gravity="right"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
+                                android:src="@drawable/ic_baseline_fast_forward_24"
+                                android:id="@+id/suffel_id"
+                                />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
 
                 </RelativeLayout>
 
@@ -249,6 +262,6 @@
 
         </LinearLayout>
 
-    
+
 
 </LinearLayout>
