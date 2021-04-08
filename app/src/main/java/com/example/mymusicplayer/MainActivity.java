@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        
+
         listView=findViewById(R.id.listView);
         btnPlay=findViewById(R.id.playButtonId);
         btnNext=findViewById(R.id.nextButtonId);
@@ -175,6 +175,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+// after current song ended then next song start
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                btnNext.performClick();
+            }
+        });
+
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
