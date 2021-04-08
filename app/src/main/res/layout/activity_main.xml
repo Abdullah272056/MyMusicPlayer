@@ -209,7 +209,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:src="@drawable/pause_ic"
+                        android:src="@drawable/ic_baseline_play_arrow_24"
                         />
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView

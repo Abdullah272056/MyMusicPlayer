@@ -1,6 +1,7 @@
 package com.example.mymusicplayer;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.Manifest;
 
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<File> arrayList1;
 
 
-    Button btnPlay,btnNext,btnPrev;
+    CardView btnPlay,btnNext,btnPrev;
     ImageButton btnFf,btnFr;
     TextView txtSName,txtSStart,txtSStop;
     ArcSeekBar seekMusic;
@@ -85,8 +86,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
+
     public void runTimePermission(){
-Dexter.withContext(MainActivity.this).withPermissions(Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.RECORD_AUDIO)
+        Dexter.withContext(MainActivity.this).withPermissions(Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.RECORD_AUDIO)
         .withListener(new MultiplePermissionsListener() {
             @Override
             public void onPermissionsChecked(MultiplePermissionsReport multiplePermissionsReport) {
@@ -137,11 +141,13 @@ Dexter.withContext(MainActivity.this).withPermissions(Manifest.permission.READ_E
 
                 Toast.makeText(MainActivity.this, String.valueOf(time), Toast.LENGTH_SHORT).show();
 
-
-//                startActivity(new Intent(MainActivity.this,PlayerActivity.class)
-//                        .putExtra("songs",mySongs)
-//                        .putExtra("songName",songName)
-//                        .putExtra("pos",position));
+                if (mediaPlayer!=null){
+                    mediaPlayer.stop();
+                    mediaPlayer.release();
+                }
+                Uri uri=Uri.parse(mySongs.get(position).toString());
+                mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
+                mediaPlayer.start();
 
             }
         });
