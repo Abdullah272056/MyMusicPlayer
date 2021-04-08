@@ -5,6 +5,8 @@ import androidx.cardview.widget.CardView;
 
 import android.Manifest;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
@@ -288,6 +290,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    // animation create
+    public void startAnimation(View view){
+        ObjectAnimator animator=ObjectAnimator.ofFloat(imageView,"rotation",0f,360f);
+        animator.setDuration(1000);
+        AnimatorSet animatorSet=new AnimatorSet();
+        animatorSet.playTogether(animator);
+        animatorSet.start();
+    }
 
 }
