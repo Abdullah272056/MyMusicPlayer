@@ -3,15 +3,19 @@ package com.example.mymusicplayer;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.media.MediaMetadataRetriever;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
@@ -41,7 +45,7 @@ public class SongListActivity extends AppCompatActivity {
                 .withListener(new MultiplePermissionsListener() {
                     @Override
                     public void onPermissionsChecked(MultiplePermissionsReport multiplePermissionsReport) {
-                        //displaySong();
+                        displaySong();
                     }
                     @Override
                     public void onPermissionRationaleShouldBeShown(List<PermissionRequest> list, PermissionToken permissionToken) {
@@ -66,6 +70,32 @@ public class SongListActivity extends AppCompatActivity {
 
         arrayList1.addAll(arrayList);
         return arrayList;
+    }
+    void displaySong(){
+        final ArrayList<File> mySongs=findSong(Environment.getExternalStorageDirectory());
+        items=new String[mySongs.size()];
+        if (mySongs.size()>0){
+            for (int i=0;i<mySongs.size();i++){
+                items[i]=mySongs.get(i).getName().toString().replace(".mp3","").replace(".wav","");
+            }
+        }
+
+        SongListActivity.CustomAdapter customAdapter=new SongListActivity.CustomAdapter();
+        listView.setAdapter(customAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+                String songName= (String) listView.getItemAtPosition(position);
+
+                startActivity(new Intent(SongListActivity.this,MainActivity.class)
+                        .putExtra("songs",mySongs)
+                        .putExtra("songName",songName)
+                        .putExtra("pos",position));
+
+            }
+        });
     }
     class CustomAdapter extends BaseAdapter {
         @Override
