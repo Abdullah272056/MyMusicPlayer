@@ -142,6 +142,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnPrev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mediaPlayer.stop();
+                mediaPlayer.release();
+                position=((position-1)<0)?(mySongs.size()-1):(position-1);
+                Uri uri=Uri.parse(mySongs.get(position).toString());
+                mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
+                sName=mySongs.get(position).getName();
+                txtSName.setText(sName);
+                mediaPlayer.start();
+                btnPlay.setBackgroundResource(R.drawable.pause_ic);
+                //startAnimation(imageView);
+
+
+                int audioSessionId=mediaPlayer.getAudioSessionId();
+                if (audioSessionId!=-1){
+                    visualizer.setAudioSessionId(audioSessionId);
+                }
+            }
+        });
+
 
     }
 
