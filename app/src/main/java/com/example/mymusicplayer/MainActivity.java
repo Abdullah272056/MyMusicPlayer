@@ -181,6 +181,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCompletion(MediaPlayer mp) {
                 btnNext.performClick();
+
+            }
+        });
+
+
+        btnFf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mediaPlayer!=null){
+                    mediaPlayer.seekTo(mediaPlayer.getCurrentPosition()+10000);
+                }
             }
         });
 
