@@ -69,16 +69,18 @@
                             android:layout_alignParentBottom="true"
                             android:layout_centerInParent="true"
                             android:innerRadius="0dp"
-                            android:shape="ring"
                             android:layout_margin="40dp"
                             >
-                            <ImageView
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/imageViewId"
+                                xmlns:app="http://schemas.android.com/apk/res-auto"
                                 android:layout_width="240dp"
                                 android:layout_height="240dp"
                                 android:src="@drawable/song_img"
-                                android:id="@+id/imageViewId"
-                                android:scaleType="centerCrop"
-                                />
+                                app:civ_border_width="1.5dp"
+                                app:civ_border_color="#FF000000"/>
+
 
 
 
@@ -157,7 +159,7 @@
                     android:singleLine="true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="13dp"
+                    android:textSize="17dp"
                     android:text="Bon Jovi - Janie Don't Take Your Love To Town"
                     android:textAlignment="center"
                     android:id="@+id/songNameTextViewId"

@@ -44,4 +44,5 @@ dependencies {
     implementation 'com.github.marcinmoskala:ArcSeekBar:0.31'
 
     implementation 'com.mikhaellopez:circularimageview:4.2.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
