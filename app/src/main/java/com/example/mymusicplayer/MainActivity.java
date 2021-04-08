@@ -176,12 +176,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-// after current song ended then next song start
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+        btnFr.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCompletion(MediaPlayer mp) {
-                btnNext.performClick();
-
+            public void onClick(View v) {
+                if (mediaPlayer!=null){
+                    mediaPlayer.seekTo(mediaPlayer.getCurrentPosition()-10000);
+                }
             }
         });
 
@@ -219,6 +219,15 @@ public class MainActivity extends AppCompatActivity {
 //                if (audioSessionId!=-1){
 //                    visualizer.setAudioSessionId(audioSessionId);
 //                }
+            }
+        });
+
+        // after current song ended then next song start
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                btnNext.performClick();
+
             }
         });
 
