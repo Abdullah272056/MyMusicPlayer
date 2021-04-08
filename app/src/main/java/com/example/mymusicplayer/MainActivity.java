@@ -1,5 +1,6 @@
 package com.example.mymusicplayer;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -14,6 +15,8 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -63,9 +66,30 @@ public class MainActivity extends AppCompatActivity {
     Thread updateSeekBar;
 
     @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId()==android.R.id.home){
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (visualizer!=null){
+            visualizer.release();
+        }
+        super.onDestroy();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setTitle("Now Playing");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        
         listView=findViewById(R.id.listView);
         btnPlay=findViewById(R.id.playButtonId);
         btnNext=findViewById(R.id.nextButtonId);
@@ -107,27 +131,7 @@ public class MainActivity extends AppCompatActivity {
         mediaPlayer.start();
 
 
-        updateSeekBar=new Thread(){
-            @Override
-            public void run() {
-                int totalDuration=mediaPlayer.getDuration();
-                int currentPosition=0;
-                while (currentPosition<totalDuration){
-                    try {
-                        sleep(500);
-                        currentPosition=mediaPlayer.getCurrentPosition();
-                        seekMusic.setProgress(currentPosition);
-                    }catch (InterruptedException | IllegalStateException e){
-                        e.printStackTrace();
-                    }
-                }
-                super.run();
-            }
-        };
-
-        //seekMusic.setMax(mediaPlayer.getDuration());
-        seekMusic.setMaxProgress(mediaPlayer.getDuration());
-        updateSeekBar.start();
+       UpdateSeekBar();
 
 
 //        //seekMusic set Listener
@@ -144,6 +148,20 @@ public class MainActivity extends AppCompatActivity {
         // time format change and set textView
         String endTime=createTime(mediaPlayer.getDuration());
         txtSStop.setText(endTime);
+
+        // after one second change current time and
+        // when user change seekBar progress then get current time and set textView
+        final Handler handler=new Handler();
+        final  int delay=1000;
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                String currentTime=createTime(mediaPlayer.getCurrentPosition());
+                txtSStart.setText(currentTime);
+                handler.postDelayed(this,delay);
+            }
+        },delay);
+
 
         btnPlay.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -169,6 +187,10 @@ public class MainActivity extends AppCompatActivity {
                 mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
                 sName=mySongs.get(position).getName();
                 txtSName.setText(sName);
+
+                txtSStop.setText(createTime(mediaPlayer.getDuration()));
+                UpdateSeekBar();
+
                 mediaPlayer.start();
                 btnPlay.setBackgroundResource(R.drawable.pause_ic);
                 startAnimation(imageView);
@@ -190,6 +212,11 @@ public class MainActivity extends AppCompatActivity {
                 mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
                 sName=mySongs.get(position).getName();
                 txtSName.setText(sName);
+
+
+                txtSStop.setText(createTime(mediaPlayer.getDuration()));
+                UpdateSeekBar();
+
                 mediaPlayer.start();
                 btnPlay.setBackgroundResource(R.drawable.pause_ic);
                 startAnimation(imageView);
@@ -235,5 +262,30 @@ public class MainActivity extends AppCompatActivity {
             time = String.format("%02d:%02d", mns, scs);
         }
         return time;
+    }
+
+
+    void UpdateSeekBar(){
+        updateSeekBar=new Thread(){
+            @Override
+            public void run() {
+                int totalDuration=mediaPlayer.getDuration();
+                int currentPosition=0;
+                while (currentPosition<totalDuration){
+                    try {
+                        sleep(500);
+                        currentPosition=mediaPlayer.getCurrentPosition();
+                        seekMusic.setProgress(currentPosition);
+                    }catch (InterruptedException | IllegalStateException e){
+                        e.printStackTrace();
+                    }
+                }
+                super.run();
+            }
+        };
+
+        //seekMusic.setMax(mediaPlayer.getDuration());
+        seekMusic.setMaxProgress(mediaPlayer.getDuration());
+        updateSeekBar.start();
     }
 }
