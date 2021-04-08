@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton btnFf,btnFr;
     TextView txtSName,txtSStart,txtSStop;
     ArcSeekBar seekMusic;
+
     BarVisualizer visualizer;
     ImageView imageView,playImageView;
 
@@ -138,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
 
        UpdateSeekBar();
-
+        runNextSon();
 
 //        //seekMusic set Listener
 //        seekMusic.setOnProgressChangedListener(new ProgressListener() {
@@ -147,9 +148,7 @@ public class MainActivity extends AppCompatActivity {
 //                mediaPlayer.seekTo(i);
 //            }
 //        });
-//        // time format change and set textView
-//        String endTime=createTime(mediaPlayer.getDuration());
-//        txtSStop.setText(endTime);
+
 
         // time format change and set textView
         String endTime=createTime(mediaPlayer.getDuration());
@@ -203,14 +202,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // after current song ended then next song start
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                btnNext.performClick();
 
-            }
-        });
+
+
+
 
         int audioSessionId=mediaPlayer.getAudioSessionId();
         if (audioSessionId!=-1){
@@ -351,5 +346,25 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
         }
         return bm;
+    }
+
+
+    void runNextSon(){
+        final Handler handler2=new Handler();
+        final  int delay1=2000;
+        handler2.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // after current song ended then next song start
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        btnNext.performClick();
+
+                    }
+                });
+                handler2.postDelayed(this,delay1);
+            }
+        },delay1);
     }
 }

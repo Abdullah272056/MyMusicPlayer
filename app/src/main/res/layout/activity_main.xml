@@ -88,6 +88,8 @@
 
 
                         <com.marcinmoskala.arcseekbar.ArcSeekBar
+                            android:backgroundTint="#F10A0A"
+                            app:progressWidth="5dp"
                             android:layout_width="320dp"
                             android:layout_height="320dp"
                             app:roundEdges="true"
@@ -263,19 +265,20 @@
 <!--                android:layout_marginTop="5dp"-->
 <!--                android:dividerHeight="10sp"-->
 <!--                android:padding="8dp" />-->
+
             <com.gauravk.audiovisualizer.visualizer.BarVisualizer
-                android:layout_marginTop="30dp"
+
+                android:layout_marginTop="40dp"
                 xmlns:custom="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/blast"
-                android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_width="340dp"
+                android:layout_height="100dp"
                 custom:avDensity="0.5"
                 custom:avType="outline"
                 custom:avWidth="4dp"
-                custom:avColor="#FA0707"
+                custom:avColor="#9C27B0"
                 android:layout_alignParentBottom="true"
                 custom:avSpeed="normal"/>
-
         </LinearLayout>
 
 
