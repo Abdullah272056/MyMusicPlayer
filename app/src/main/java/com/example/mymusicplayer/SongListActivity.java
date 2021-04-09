@@ -34,12 +34,14 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mymusicplayer.theme.ThemeDataBaseHelper;
 import com.example.mymusicplayer.theme.ThemeNote;
 import com.google.android.material.navigation.NavigationView;
 import com.karumi.dexter.Dexter;
@@ -59,12 +61,13 @@ public class SongListActivity extends AppCompatActivity {
     ArrayList<File> arrayList1;
 
     Toolbar toolbar;
+    ThemeDataBaseHelper themeDataBaseHelper;
+    LinearLayout linearLayout;
+    Button saveButton ,cancelButton;
     int colorStatus;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    Button saveButton ,cancelButton;
     RadioButton purpleRadioButton,blackRadioButton,whiteRadioButton,redRadioButton,blueRadioButton,greenRadioButton;
-
     private List<ThemeNote> themeStatusData;
 
     TextView header;
@@ -86,6 +89,18 @@ public class SongListActivity extends AppCompatActivity {
         arrayList1=new ArrayList<>();
         runTimePermission();
 
+        // call ThemeDataBaseHelper class
+        themeDataBaseHelper=new ThemeDataBaseHelper(SongListActivity.this);
+        themeDataBaseHelper.getWritableDatabase();
+        themeStatusData  = new ArrayList<>();
+        if (themeDataBaseHelper.getAllNotes().size()<1){
+            for (int i = 0; i <=1; i++) {
+                int id=themeDataBaseHelper.insertData(new ThemeNote(3));
+                if (id!=0){
+                    Toast.makeText(this, "success "+String.valueOf(i), Toast.LENGTH_SHORT).show();
+                }
+            }
+        }
 
 
         ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(
@@ -310,7 +325,7 @@ public class SongListActivity extends AppCompatActivity {
 
 
         themeStatusData  = new ArrayList<>();
-       // themeStatusData = themeDataBaseHelper.getAllNotes();
+       themeStatusData = themeDataBaseHelper.getAllNotes();
         if (themeStatusData.get(0).getThemeStatus()==1){
             purpleRadioButton.setChecked(true);
 

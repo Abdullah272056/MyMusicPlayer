@@ -15,7 +15,7 @@ import java.util.List;
 public class ThemeDataBaseHelper extends SQLiteOpenHelper {
 
     public  static final String DATABASE_NAME="THEME.db";
-    public  static final int DATABASE_VERSION=8;
+    public  static final int DATABASE_VERSION=1;
     public  static final String THEME_TABLE_NAME="THEME";
 
     public  static final String COLUMN_THEME_ID="theme_id";
