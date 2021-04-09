@@ -31,7 +31,7 @@
 
     <com.google.android.material.navigation.NavigationView
         app:itemIconTint="#FFFFFF"
-        app:itemTextColor="#FFFFFF"
+        app:itemTextColor="#000000"
         android:id="@+id/myNavigationViewId"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
