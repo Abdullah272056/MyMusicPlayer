@@ -32,8 +32,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,6 +61,8 @@ public class SongListActivity extends AppCompatActivity {
     int colorStatus;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
+    Button saveButton ,cancelButton;
+    RadioButton purpleRadioButton,blackRadioButton,whiteRadioButton,redRadioButton,blueRadioButton,greenRadioButton;
 
     TextView header;
     View headerview;
@@ -291,7 +295,17 @@ public class SongListActivity extends AppCompatActivity {
         builder.setView(view);
         final AlertDialog alertDialog   = builder.create();
 
+        saveButton=view.findViewById(R.id.colorOkButtonId);
+        cancelButton=view.findViewById(R.id.colorCancelButtonId);
+        purpleRadioButton=view.findViewById(R.id.purpleRadioButtonId);
+        blackRadioButton=view.findViewById(R.id.madeBlackRadioButtonId);
+        whiteRadioButton=view.findViewById(R.id.whiteRadioButtonId);
+        blueRadioButton=view.findViewById(R.id.lightBlueRadioButtonId);
+        greenRadioButton=view.findViewById(R.id.lightGreenRadioButtonId);
+        redRadioButton=view.findViewById(R.id.lightRedRadioButtonId);
 
+
+        final RadioGroup radio =view.findViewById(R.id.radioGroupId);
 
 
         alertDialog.show();
