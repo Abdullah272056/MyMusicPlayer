@@ -313,14 +313,14 @@ public class SongListActivity extends AppCompatActivity {
         builder.setView(view);
         final AlertDialog alertDialog   = builder.create();
 
-        saveButton=view.findViewById(R.id.colorOkButtonId);
-        cancelButton=view.findViewById(R.id.colorCancelButtonId);
-        purpleRadioButton=view.findViewById(R.id.purpleRadioButtonId);
-        blackRadioButton=view.findViewById(R.id.madeBlackRadioButtonId);
-        whiteRadioButton=view.findViewById(R.id.whiteRadioButtonId);
-        blueRadioButton=view.findViewById(R.id.lightBlueRadioButtonId);
-        greenRadioButton=view.findViewById(R.id.lightGreenRadioButtonId);
-        redRadioButton=view.findViewById(R.id.lightRedRadioButtonId);
+        saveButton          =view.findViewById(R.id.colorOkButtonId);
+        cancelButton        =view.findViewById(R.id.colorCancelButtonId);
+        purpleRadioButton   =view.findViewById(R.id.purpleRadioButtonId);
+        blackRadioButton    =view.findViewById(R.id.madeBlackRadioButtonId);
+        whiteRadioButton    =view.findViewById(R.id.whiteRadioButtonId);
+        blueRadioButton     =view.findViewById(R.id.lightBlueRadioButtonId);
+        greenRadioButton    =view.findViewById(R.id.lightGreenRadioButtonId);
+        redRadioButton      =view.findViewById(R.id.lightRedRadioButtonId);
         final RadioGroup radio =view.findViewById(R.id.radioGroupId);
 
 
@@ -372,6 +372,22 @@ public class SongListActivity extends AppCompatActivity {
                         colorStatus=6;
                         break;
                 }
+            }
+        });
+
+
+        saveButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                int id=themeDataBaseHelper.updateThemeData(new ThemeNote(1,colorStatus));
+                if (id==1){
+                    Toast.makeText(getApplicationContext(), "Change  theme", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "change fail", Toast.LENGTH_SHORT).show();
+                }
+
+                alertDialog.dismiss();
             }
         });
 
