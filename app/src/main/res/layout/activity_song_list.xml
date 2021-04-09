@@ -16,5 +16,14 @@
         android:layout_marginTop="5dp"
         android:dividerHeight="10sp"
         android:padding="8dp" />
-
+    <com.google.android.material.navigation.NavigationView
+        app:itemIconTint="#FFFFFF"
+        app:itemTextColor="#FFFFFF"
+        android:id="@+id/myNavigationViewId"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/navigation_header"
+        app:menu="@menu/my_menu" />
 </androidx.drawerlayout.widget.DrawerLayout>
