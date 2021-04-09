@@ -309,6 +309,30 @@ public class SongListActivity extends AppCompatActivity {
         final RadioGroup radio =view.findViewById(R.id.radioGroupId);
 
 
+        themeStatusData  = new ArrayList<>();
+       // themeStatusData = themeDataBaseHelper.getAllNotes();
+        if (themeStatusData.get(0).getThemeStatus()==1){
+            purpleRadioButton.setChecked(true);
+
+        }
+        if (themeStatusData.get(0).getThemeStatus()==2){
+            blackRadioButton.setChecked(true);
+        }
+        if (themeStatusData.get(0).getThemeStatus()==3){
+            whiteRadioButton.setChecked(true);
+        }
+        if (themeStatusData.get(0).getThemeStatus()==4){
+            redRadioButton.setChecked(true);
+        }
+        if (themeStatusData.get(0).getThemeStatus()==5){
+            blueRadioButton.setChecked(true);
+        }
+        if (themeStatusData.get(0).getThemeStatus()==6){
+            greenRadioButton.setChecked(true);
+        }
+
+
+
         alertDialog.show();
     }
 }
