@@ -89,6 +89,8 @@ public class SongListActivity extends AppCompatActivity {
 
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_menu_24);
+
 
     }
 
