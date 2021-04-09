@@ -1,8 +1,10 @@
 package com.example.mymusicplayer;
 
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.Manifest;
 import android.content.ContentUris;
@@ -27,6 +29,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.navigation.NavigationView;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -44,12 +47,20 @@ public class SongListActivity extends AppCompatActivity {
     ArrayList<File> arrayList1;
 
     Toolbar toolbar;
+    int colorStatus;
+    DrawerLayout drawerLayout;
+    NavigationView navigationView;
 
+    TextView header;
+    View headerview;
+    View view1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_song_list);
         toolbar=findViewById (R.id.toolbarId);
+        drawerLayout=findViewById (R.id.drawerLayoutId);
+
         if (toolbar!=null){
             setSupportActionBar (toolbar);
         }
@@ -58,6 +69,27 @@ public class SongListActivity extends AppCompatActivity {
         listView=findViewById(R.id.listView);
         arrayList1=new ArrayList<>();
         runTimePermission();
+
+
+
+        ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(
+                SongListActivity.this,drawerLayout,toolbar,R.string.open,R.string.closed){
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                Toast.makeText (SongListActivity.this, "Open", Toast.LENGTH_SHORT).show ();
+            }
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                Toast.makeText (SongListActivity.this, "Closed", Toast.LENGTH_SHORT).show ();
+
+            }
+        };
+
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+
     }
 
     public void runTimePermission(){
