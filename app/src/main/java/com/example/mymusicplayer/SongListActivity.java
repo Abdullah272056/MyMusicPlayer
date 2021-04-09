@@ -26,6 +26,7 @@ import android.os.Environment;
 import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -123,7 +125,7 @@ public class SongListActivity extends AppCompatActivity {
                         break;
 
                     case R.id.themeItemIdId:
-                       // CustomAdapterForColorChange();
+                        CustomAdapterForColorChange();
                         break;
                     case R.id.shareItemIdId:
 //                        Intent sendIntent = new Intent();
@@ -280,5 +282,18 @@ public class SongListActivity extends AppCompatActivity {
             e.getMessage();
             return null;
         }
+    }
+
+    public void CustomAdapterForColorChange(){
+        AlertDialog.Builder builder     =new AlertDialog.Builder(SongListActivity.this);
+        LayoutInflater layoutInflater   =LayoutInflater.from(SongListActivity.this);
+        final View view                       =layoutInflater.inflate(R.layout.color_change_box,null);
+        builder.setView(view);
+        final AlertDialog alertDialog   = builder.create();
+
+
+
+
+        alertDialog.show();
     }
 }
