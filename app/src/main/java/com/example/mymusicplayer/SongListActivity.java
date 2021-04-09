@@ -13,8 +13,10 @@ import android.Manifest;
 import android.content.ContentUris;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -101,6 +103,16 @@ public class SongListActivity extends AppCompatActivity {
 
         headerview=navigationView.getHeaderView(0);
         header=headerview.findViewById(R.id.navigationSubHeaderId);
+        int[][] states = new int[][] {
+                new int[] { android.R.attr.state_enabled}, // enabled
+        };
+        int[] colors = new int[] {
+                Color.BLACK,
+        };
+        ColorStateList myList = new ColorStateList(states, colors);
+        navigationView.setItemTextColor(myList);
+        navigationView.setItemIconTintList(myList);
+
 
         navigationView.setNavigationItemSelectedListener (new NavigationView.OnNavigationItemSelectedListener () {
             @Override
