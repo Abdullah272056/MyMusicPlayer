@@ -326,9 +326,9 @@ public class SongListActivity extends AppCompatActivity {
 
         themeStatusData  = new ArrayList<>();
        themeStatusData = themeDataBaseHelper.getAllNotes();
+       // current radio button set checked
         if (themeStatusData.get(0).getThemeStatus()==1){
             purpleRadioButton.setChecked(true);
-
         }
         if (themeStatusData.get(0).getThemeStatus()==2){
             blackRadioButton.setChecked(true);
@@ -345,6 +345,35 @@ public class SongListActivity extends AppCompatActivity {
         if (themeStatusData.get(0).getThemeStatus()==6){
             greenRadioButton.setChecked(true);
         }
+
+        // radio button click listener
+        radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                View radioButton = radio.findViewById(checkedId);
+                int index = radio.indexOfChild(radioButton);
+                switch (index){
+                    case 0:
+                        colorStatus=1;
+                        break;
+                    case 1:
+                        colorStatus=2;
+                        break;
+                    case 2:
+                        colorStatus=3;
+                        break;
+                    case 3:
+                        colorStatus=4;
+                        break;
+                    case 4:
+                        colorStatus=5;
+                        break;
+                    case 5:
+                        colorStatus=6;
+                        break;
+                }
+            }
+        });
 
 
 
