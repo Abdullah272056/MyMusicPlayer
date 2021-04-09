@@ -2,6 +2,7 @@ package com.example.mymusicplayer;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.Manifest;
 import android.content.ContentUris;
@@ -42,10 +43,18 @@ public class SongListActivity extends AppCompatActivity {
     ListView listView;
     ArrayList<File> arrayList1;
 
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_song_list);
+        toolbar=findViewById (R.id.toolbarId);
+        if (toolbar!=null){
+            setSupportActionBar (toolbar);
+        }
+
+
         listView=findViewById(R.id.listView);
         arrayList1=new ArrayList<>();
         runTimePermission();
