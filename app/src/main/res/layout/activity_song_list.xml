@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout
+    android:orientation="vertical"
     android:id="@+id/drawerLayoutId"
     android:fitsSystemWindows="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -8,14 +9,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SongListActivity">
-
-    <ListView
-        android:id="@+id/listView"
+    <LinearLayout
+        android:id="@+id/mainLayoutId"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:dividerHeight="10sp"
-        android:padding="8dp" />
+        android:layout_height="match_parent">
+        <include layout="@layout/my_toolbar"
+            android:id="@+id/toolbarId"
+            />
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:dividerHeight="10sp"
+            android:padding="8dp" />
+
+    </LinearLayout>
+
+
+
     <com.google.android.material.navigation.NavigationView
         app:itemIconTint="#FFFFFF"
         app:itemTextColor="#FFFFFF"
