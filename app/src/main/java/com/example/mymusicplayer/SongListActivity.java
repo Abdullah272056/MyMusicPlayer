@@ -40,6 +40,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mymusicplayer.theme.ThemeNote;
 import com.google.android.material.navigation.NavigationView;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
@@ -63,6 +64,8 @@ public class SongListActivity extends AppCompatActivity {
     NavigationView navigationView;
     Button saveButton ,cancelButton;
     RadioButton purpleRadioButton,blackRadioButton,whiteRadioButton,redRadioButton,blueRadioButton,greenRadioButton;
+
+    private List<ThemeNote> themeStatusData;
 
     TextView header;
     View headerview;
@@ -303,8 +306,6 @@ public class SongListActivity extends AppCompatActivity {
         blueRadioButton=view.findViewById(R.id.lightBlueRadioButtonId);
         greenRadioButton=view.findViewById(R.id.lightGreenRadioButtonId);
         redRadioButton=view.findViewById(R.id.lightRedRadioButtonId);
-
-
         final RadioGroup radio =view.findViewById(R.id.radioGroupId);
 
 
