@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:padding="20dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <RadioGroup
+        android:layout_margin="35dp"
+        android:id="@+id/radioGroupId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="left"
+        android:inputType="text"
+        android:orientation="vertical" >
+
+        <RadioButton
+            android:id="@+id/purpleRadioButtonId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:button="@null"
+            android:drawablePadding="30dp"
+            android:drawableLeft="@android:drawable/btn_radio"
+            android:text="Purple"
+            android:textColor="#222222"
+            android:textSize="28sp"/>
+        <RadioButton
+            android:id="@+id/madeBlackRadioButtonId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="#FFFFFF"
+            android:button="@null"
+            android:drawablePadding="30dp"
+            android:drawableLeft="@android:drawable/btn_radio"
+            android:text="Made Black"
+            android:textColor="#222222"
+            android:textSize="28sp" />
+        <RadioButton
+            android:id="@+id/whiteRadioButtonId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:button="@null"
+            android:drawablePadding="30dp"
+            android:drawableLeft="@android:drawable/btn_radio"
+            android:text="White"
+            android:textColor="#222222"
+            android:textSize="28sp" />
+
+        <RadioButton
+            android:id="@+id/lightRedRadioButtonId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:button="@null"
+            android:drawableLeft="@android:drawable/btn_radio"
+            android:drawablePadding="30dp"
+            android:text="Light Red"
+            android:textColor="#222222"
+            android:textSize="28sp" />
+        <RadioButton
+            android:id="@+id/lightBlueRadioButtonId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:background="#FFFFFF"
+            android:button="@null"
+            android:drawablePadding="30dp"
+            android:drawableLeft="@android:drawable/btn_radio"
+            android:text="Light Blue"
+            android:textColor="#222222"
+            android:textSize="28sp" />
+        <RadioButton
+            android:id="@+id/lightGreenRadioButtonId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:button="@null"
+            android:drawablePadding="30dp"
+            android:drawableLeft="@android:drawable/btn_radio"
+            android:text="Green"
+            android:textColor="#222222"
+            android:textSize="28sp" />
+
+    </RadioGroup>
+    <LinearLayout
+
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/colorCancelButtonId"
+            android:textSize="22sp"
+            android:text="Cancel"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/colorOkButtonId"
+            android:textSize="22sp"
+            android:layout_marginLeft="50dp"
+            android:text="Ok"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"/>
+
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
