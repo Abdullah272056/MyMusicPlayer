@@ -377,6 +377,13 @@ public class SongListActivity extends AppCompatActivity {
 
 
 
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
+            }
+        });
+
         alertDialog.show();
     }
 }
