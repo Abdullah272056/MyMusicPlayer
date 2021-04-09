@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/drawerLayoutId"
+    android:fitsSystemWindows="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,5 +16,5 @@
         android:layout_marginTop="5dp"
         android:dividerHeight="10sp"
         android:padding="8dp" />
-
-</LinearLayout>
+  
+</androidx.drawerlayout.widget.DrawerLayout>
