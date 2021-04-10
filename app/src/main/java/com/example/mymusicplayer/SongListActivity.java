@@ -336,6 +336,68 @@ public class SongListActivity extends AppCompatActivity {
         cancelButton=view.findViewById(R.id.cancelButton);
         saveButton=view.findViewById(R.id.okButton);
 
+        themeStatusData  = new ArrayList<>();
+       themeStatusData = themeDataBaseHelper.getAllNotes();
+       colorStatus =themeStatusData.get(0).getThemeStatus();
+       if (colorStatus==1){
+           selectColor.setBackgroundColor(getResources().getColor(R.color.color1));
+
+       }
+       else  if (colorStatus==2){
+           selectColor.setBackgroundColor(getResources().getColor(R.color.color2));
+
+       }
+       else  if (colorStatus==3){
+           selectColor.setBackgroundColor(getResources().getColor(R.color.color3));
+
+       }
+       else  if (colorStatus==4){
+           selectColor.setBackgroundColor(getResources().getColor(R.color.color4));
+
+       }
+       else  if (colorStatus==5){
+           selectColor.setBackgroundColor(getResources().getColor(R.color.color5));
+
+       }
+       else  if (colorStatus==6){
+           selectColor.setBackgroundColor(getResources().getColor(R.color.color6));
+
+       }
+       else  if (colorStatus==7){
+           selectColor.setBackgroundColor(getResources().getColor(R.color.color7));
+
+       }
+       else  if (colorStatus==8){
+           selectColor.setBackgroundColor(getResources().getColor(R.color.color8));
+
+       }
+       else  if (colorStatus==9){
+           selectColor.setBackgroundColor(getResources().getColor(R.color.color9));
+       }
+       else  if (colorStatus==10){
+           selectColor.setBackgroundColor(getResources().getColor(R.color.color10));
+       }
+       else  if (colorStatus==11){
+           selectColor.setBackgroundColor(getResources().getColor(R.color.color11));
+       }
+       else  if (colorStatus==12){
+           selectColor.setBackgroundColor(getResources().getColor(R.color.color12));
+       }
+       else  if (colorStatus==13){
+           selectColor.setBackgroundColor(getResources().getColor(R.color.color13));
+       }
+       else  if (colorStatus==14){
+           selectColor.setBackgroundColor(getResources().getColor(R.color.color14));
+       } else  if (colorStatus==15){
+           selectColor.setBackgroundColor(getResources().getColor(R.color.color15));
+       }
+       else  if (colorStatus==16){
+           selectColor.setBackgroundColor(getResources().getColor(R.color.color16));
+       }
+
+
+
+
         color1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
