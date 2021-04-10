@@ -340,93 +340,108 @@ public class SongListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 colorStatus=1;
-                selectColor.setBackgroundColor(getResources().getColor(R.color.colorAccent));
+                selectColor.setBackgroundColor(getResources().getColor(R.color.color1));
             }
         });
         color2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 colorStatus=2;
+                selectColor.setBackgroundColor(getResources().getColor(R.color.color2));
             }
         });
         color3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 colorStatus=3;
+                selectColor.setBackgroundColor(getResources().getColor(R.color.color3));
             }
         });
         color4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 colorStatus=4;
+                selectColor.setBackgroundColor(getResources().getColor(R.color.color4));
             }
         });
         color5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 colorStatus=5;
+                selectColor.setBackgroundColor(getResources().getColor(R.color.color5));
             }
         });
         color6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 colorStatus=6;
+                selectColor.setBackgroundColor(getResources().getColor(R.color.color6));
             }
         });
         color7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 colorStatus=7;
+                selectColor.setBackgroundColor(getResources().getColor(R.color.color7));
             }
         });
         color8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 colorStatus=8;
+                selectColor.setBackgroundColor(getResources().getColor(R.color.color8));
             }
         });
         color9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 colorStatus=9;
+                selectColor.setBackgroundColor(getResources().getColor(R.color.color9));
             }
         }); color10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 colorStatus=10;
+                selectColor.setBackgroundColor(getResources().getColor(R.color.color10));
             }
         });
         color11.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 colorStatus=11;
+                selectColor.setBackgroundColor(getResources().getColor(R.color.color11));
             }
         });
         color12.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 colorStatus=12;
+                selectColor.setBackgroundColor(getResources().getColor(R.color.color12));
             }
         });
         color13.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 colorStatus=13;
+                selectColor.setBackgroundColor(getResources().getColor(R.color.color13));
             }
         }); color14.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 colorStatus=14;
+                selectColor.setBackgroundColor(getResources().getColor(R.color.color14));
             }
         }); color15.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 colorStatus=15;
+                selectColor.setBackgroundColor(getResources().getColor(R.color.color15));
             }
         }); color16.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 colorStatus=16;
+                selectColor.setBackgroundColor(getResources().getColor(R.color.color16));
             }
         });
 
