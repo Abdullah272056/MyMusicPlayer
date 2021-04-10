@@ -309,97 +309,111 @@ public class SongListActivity extends AppCompatActivity {
     public void CustomAdapterForColorChange(){
         AlertDialog.Builder builder     =new AlertDialog.Builder(SongListActivity.this);
         LayoutInflater layoutInflater   =LayoutInflater.from(SongListActivity.this);
-        final View view                       =layoutInflater.inflate(R.layout.color_change_box,null);
+        final View view                       =layoutInflater.inflate(R.layout.color_box,null);
         builder.setView(view);
         final AlertDialog alertDialog   = builder.create();
 
-        saveButton          =view.findViewById(R.id.colorOkButtonId);
-        cancelButton        =view.findViewById(R.id.colorCancelButtonId);
-        purpleRadioButton   =view.findViewById(R.id.purpleRadioButtonId);
-        blackRadioButton    =view.findViewById(R.id.madeBlackRadioButtonId);
-        whiteRadioButton    =view.findViewById(R.id.whiteRadioButtonId);
-        blueRadioButton     =view.findViewById(R.id.lightBlueRadioButtonId);
-        greenRadioButton    =view.findViewById(R.id.lightGreenRadioButtonId);
-        redRadioButton      =view.findViewById(R.id.lightRedRadioButtonId);
-        final RadioGroup radio =view.findViewById(R.id.radioGroupId);
 
-
-        themeStatusData  = new ArrayList<>();
-       themeStatusData = themeDataBaseHelper.getAllNotes();
-       // current radio button set checked
-        if (themeStatusData.get(0).getThemeStatus()==1){
-            purpleRadioButton.setChecked(true);
-        }
-        if (themeStatusData.get(0).getThemeStatus()==2){
-            blackRadioButton.setChecked(true);
-        }
-        if (themeStatusData.get(0).getThemeStatus()==3){
-            whiteRadioButton.setChecked(true);
-        }
-        if (themeStatusData.get(0).getThemeStatus()==4){
-            redRadioButton.setChecked(true);
-        }
-        if (themeStatusData.get(0).getThemeStatus()==5){
-            blueRadioButton.setChecked(true);
-        }
-        if (themeStatusData.get(0).getThemeStatus()==6){
-            greenRadioButton.setChecked(true);
-        }
-
-        // radio button click listener
-        radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                View radioButton = radio.findViewById(checkedId);
-                int index = radio.indexOfChild(radioButton);
-                switch (index){
-                    case 0:
-                        colorStatus=1;
-                        break;
-                    case 1:
-                        colorStatus=2;
-                        break;
-                    case 2:
-                        colorStatus=3;
-                        break;
-                    case 3:
-                        colorStatus=4;
-                        break;
-                    case 4:
-                        colorStatus=5;
-                        break;
-                    case 5:
-                        colorStatus=6;
-                        break;
-                }
-            }
-        });
-
-
-        saveButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                int id=themeDataBaseHelper.updateThemeData(new ThemeNote(1,colorStatus));
-                if (id==1){
-                    Toast.makeText(getApplicationContext(), "Change  theme", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    Toast.makeText(getApplicationContext(), "change fail", Toast.LENGTH_SHORT).show();
-                }
-
-                alertDialog.dismiss();
-            }
-        });
-
-
-
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
 
         alertDialog.show();
     }
+
+
+
+//    public void CustomAdapterForColorChange(){
+//        AlertDialog.Builder builder     =new AlertDialog.Builder(SongListActivity.this);
+//        LayoutInflater layoutInflater   =LayoutInflater.from(SongListActivity.this);
+//        final View view                       =layoutInflater.inflate(R.layout.color_change_box,null);
+//        builder.setView(view);
+//        final AlertDialog alertDialog   = builder.create();
+//
+//        saveButton          =view.findViewById(R.id.colorOkButtonId);
+//        cancelButton        =view.findViewById(R.id.colorCancelButtonId);
+//        purpleRadioButton   =view.findViewById(R.id.purpleRadioButtonId);
+//        blackRadioButton    =view.findViewById(R.id.madeBlackRadioButtonId);
+//        whiteRadioButton    =view.findViewById(R.id.whiteRadioButtonId);
+//        blueRadioButton     =view.findViewById(R.id.lightBlueRadioButtonId);
+//        greenRadioButton    =view.findViewById(R.id.lightGreenRadioButtonId);
+//        redRadioButton      =view.findViewById(R.id.lightRedRadioButtonId);
+//        final RadioGroup radio =view.findViewById(R.id.radioGroupId);
+//
+//
+//        themeStatusData  = new ArrayList<>();
+//        themeStatusData = themeDataBaseHelper.getAllNotes();
+//        // current radio button set checked
+//        if (themeStatusData.get(0).getThemeStatus()==1){
+//            purpleRadioButton.setChecked(true);
+//        }
+//        if (themeStatusData.get(0).getThemeStatus()==2){
+//            blackRadioButton.setChecked(true);
+//        }
+//        if (themeStatusData.get(0).getThemeStatus()==3){
+//            whiteRadioButton.setChecked(true);
+//        }
+//        if (themeStatusData.get(0).getThemeStatus()==4){
+//            redRadioButton.setChecked(true);
+//        }
+//        if (themeStatusData.get(0).getThemeStatus()==5){
+//            blueRadioButton.setChecked(true);
+//        }
+//        if (themeStatusData.get(0).getThemeStatus()==6){
+//            greenRadioButton.setChecked(true);
+//        }
+//
+//        // radio button click listener
+//        radio.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                View radioButton = radio.findViewById(checkedId);
+//                int index = radio.indexOfChild(radioButton);
+//                switch (index){
+//                    case 0:
+//                        colorStatus=1;
+//                        break;
+//                    case 1:
+//                        colorStatus=2;
+//                        break;
+//                    case 2:
+//                        colorStatus=3;
+//                        break;
+//                    case 3:
+//                        colorStatus=4;
+//                        break;
+//                    case 4:
+//                        colorStatus=5;
+//                        break;
+//                    case 5:
+//                        colorStatus=6;
+//                        break;
+//                }
+//            }
+//        });
+//
+//
+//        saveButton.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//                int id=themeDataBaseHelper.updateThemeData(new ThemeNote(1,colorStatus));
+//                if (id==1){
+//                    Toast.makeText(getApplicationContext(), "Change  theme", Toast.LENGTH_SHORT).show();
+//                }
+//                else {
+//                    Toast.makeText(getApplicationContext(), "change fail", Toast.LENGTH_SHORT).show();
+//                }
+//
+//                alertDialog.dismiss();
+//            }
+//        });
+//
+//
+//
+//        cancelButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                alertDialog.dismiss();
+//            }
+//        });
+//
+//        alertDialog.show();
+//    }
 }
