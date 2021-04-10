@@ -507,7 +507,20 @@ public class SongListActivity extends AppCompatActivity {
             }
         });
 
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int id=themeDataBaseHelper.updateThemeData(new ThemeNote(1,colorStatus));
+                if (id==1){
+                    Toast.makeText(getApplicationContext(), "Change  theme", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "change fail", Toast.LENGTH_SHORT).show();
+                }
 
+                alertDialog.dismiss();
+            }
+        });
 
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -516,19 +529,12 @@ public class SongListActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
-
         alertDialog.show();
     }
 
 
 
-//    public void CustomAdapterForColorChange(){
+    public void CustomAdapterForColorChange1(){
 //        AlertDialog.Builder builder     =new AlertDialog.Builder(SongListActivity.this);
 //        LayoutInflater layoutInflater   =LayoutInflater.from(SongListActivity.this);
 //        final View view                       =layoutInflater.inflate(R.layout.color_change_box,null);
@@ -623,5 +629,5 @@ public class SongListActivity extends AppCompatActivity {
 //        });
 //
 //        alertDialog.show();
-//    }
+    }
 }
