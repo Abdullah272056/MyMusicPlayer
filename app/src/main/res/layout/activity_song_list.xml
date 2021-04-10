@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.drawerlayout.widget.DrawerLayout
+
     android:orientation="vertical"
     android:id="@+id/drawerLayoutId"
     android:fitsSystemWindows="true"

@@ -93,20 +93,25 @@ public class SongListActivity extends AppCompatActivity {
         listView=findViewById(R.id.listView);
         arrayList1=new ArrayList<>();
         runTimePermission();
+        navigationView=findViewById (R.id.myNavigationViewId);
 
+
+        headerview=navigationView.getHeaderView(0);
+        header=headerview.findViewById(R.id.navigationSubHeaderId);
         // call ThemeDataBaseHelper class
         themeDataBaseHelper=new ThemeDataBaseHelper(SongListActivity.this);
         themeDataBaseHelper.getWritableDatabase();
         themeStatusData  = new ArrayList<>();
         if (themeDataBaseHelper.getAllNotes().size()<1){
             for (int i = 0; i <=1; i++) {
-                int id=themeDataBaseHelper.insertData(new ThemeNote(3));
+                int id=themeDataBaseHelper.insertData(new ThemeNote(1));
                 if (id!=0){
                     Toast.makeText(this, "success "+String.valueOf(i), Toast.LENGTH_SHORT).show();
                 }
             }
         }
 
+        setColor();
 
         ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(
                 SongListActivity.this,drawerLayout,toolbar,R.string.open,R.string.closed){
@@ -126,11 +131,7 @@ public class SongListActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
         toolbar.setNavigationIcon(R.drawable.ic_baseline_menu_24);
 
-        navigationView=findViewById (R.id.myNavigationViewId);
 
-
-        headerview=navigationView.getHeaderView(0);
-        header=headerview.findViewById(R.id.navigationSubHeaderId);
         int[][] states = new int[][] {
                 new int[] { android.R.attr.state_enabled}, // enabled
         };
@@ -341,23 +342,18 @@ public class SongListActivity extends AppCompatActivity {
        colorStatus =themeStatusData.get(0).getThemeStatus();
        if (colorStatus==1){
            selectColor.setBackgroundColor(getResources().getColor(R.color.color1));
-
        }
        else  if (colorStatus==2){
            selectColor.setBackgroundColor(getResources().getColor(R.color.color2));
-
        }
        else  if (colorStatus==3){
            selectColor.setBackgroundColor(getResources().getColor(R.color.color3));
-
        }
        else  if (colorStatus==4){
            selectColor.setBackgroundColor(getResources().getColor(R.color.color4));
-
        }
        else  if (colorStatus==5){
            selectColor.setBackgroundColor(getResources().getColor(R.color.color5));
-
        }
        else  if (colorStatus==6){
            selectColor.setBackgroundColor(getResources().getColor(R.color.color6));
@@ -512,6 +508,7 @@ public class SongListActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int id=themeDataBaseHelper.updateThemeData(new ThemeNote(1,colorStatus));
                 if (id==1){
+                    setColor();
                     Toast.makeText(getApplicationContext(), "Change  theme", Toast.LENGTH_SHORT).show();
                 }
                 else {
@@ -532,7 +529,86 @@ public class SongListActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
+public void setColor(){
+    themeStatusData  = new ArrayList<>();
+    themeStatusData = themeDataBaseHelper.getAllNotes();
+    colorStatus =themeStatusData.get(0).getThemeStatus();
+    if (colorStatus==1){
+        drawerLayout.setBackgroundColor(getResources().getColor(R.color.color1));
+        navigationView.setBackgroundColor(getResources().getColor(R.color.color1));
 
+
+    }
+    else  if (colorStatus==2){
+        drawerLayout.setBackgroundColor(getResources().getColor(R.color.color2));
+        navigationView.setBackgroundColor(getResources().getColor(R.color.color2));
+
+    }
+    else  if (colorStatus==3){
+        drawerLayout.setBackgroundColor(getResources().getColor(R.color.color3));
+        navigationView.setBackgroundColor(getResources().getColor(R.color.color3));
+
+    }
+    else  if (colorStatus==4){
+        drawerLayout.setBackgroundColor(getResources().getColor(R.color.color4));
+        navigationView.setBackgroundColor(getResources().getColor(R.color.color4));
+
+    }
+    else  if (colorStatus==5){
+        drawerLayout.setBackgroundColor(getResources().getColor(R.color.color5));
+        navigationView.setBackgroundColor(getResources().getColor(R.color.color5));
+
+    }
+    else  if (colorStatus==6){
+        drawerLayout.setBackgroundColor(getResources().getColor(R.color.color6));
+        navigationView.setBackgroundColor(getResources().getColor(R.color.color6));
+
+    }
+    else  if (colorStatus==7){
+        drawerLayout.setBackgroundColor(getResources().getColor(R.color.color7));
+        navigationView.setBackgroundColor(getResources().getColor(R.color.color7));
+
+    }
+    else  if (colorStatus==8){
+        drawerLayout.setBackgroundColor(getResources().getColor(R.color.color8));
+        navigationView.setBackgroundColor(getResources().getColor(R.color.color8));
+
+    }
+    else  if (colorStatus==9){
+        drawerLayout.setBackgroundColor(getResources().getColor(R.color.color9));
+        navigationView.setBackgroundColor(getResources().getColor(R.color.color9));
+    }
+    else  if (colorStatus==10){
+        drawerLayout.setBackgroundColor(getResources().getColor(R.color.color10));
+        navigationView.setBackgroundColor(getResources().getColor(R.color.color10));
+    }
+    else  if (colorStatus==11){
+        drawerLayout.setBackgroundColor(getResources().getColor(R.color.color11));
+        navigationView.setBackgroundColor(getResources().getColor(R.color.color11));
+    }
+    else  if (colorStatus==12){
+        drawerLayout.setBackgroundColor(getResources().getColor(R.color.color12));
+        navigationView.setBackgroundColor(getResources().getColor(R.color.color12));
+    }
+    else  if (colorStatus==13){
+        drawerLayout.setBackgroundColor(getResources().getColor(R.color.color13));
+        navigationView.setBackgroundColor(getResources().getColor(R.color.color13));
+    }
+    else  if (colorStatus==14){
+        drawerLayout.setBackgroundColor(getResources().getColor(R.color.color14));
+        navigationView.setBackgroundColor(getResources().getColor(R.color.color14));
+    }
+    else  if (colorStatus==15){
+        drawerLayout.setBackgroundColor(getResources().getColor(R.color.color15));
+        navigationView.setBackgroundColor(getResources().getColor(R.color.color15));
+    }
+    else  if (colorStatus==16){
+        drawerLayout.setBackgroundColor(getResources().getColor(R.color.color16));
+        navigationView.setBackgroundColor(getResources().getColor(R.color.color16));
+    }
+
+
+}
 
     public void CustomAdapterForColorChange1(){
 //        AlertDialog.Builder builder     =new AlertDialog.Builder(SongListActivity.this);
