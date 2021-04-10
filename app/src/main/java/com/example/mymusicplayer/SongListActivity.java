@@ -6,6 +6,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -72,7 +73,9 @@ public class SongListActivity extends AppCompatActivity {
 
     TextView header;
     View headerview;
-    View view1;
+
+    CardView color1,color2,color3,color4,color5,color6,color7,color8,
+             color9,color10,color11,color12,color13,color14,color15,color16;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,7 +117,6 @@ public class SongListActivity extends AppCompatActivity {
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
                 Toast.makeText (SongListActivity.this, "Closed", Toast.LENGTH_SHORT).show ();
-
             }
         };
 
@@ -312,6 +314,123 @@ public class SongListActivity extends AppCompatActivity {
         final View view                       =layoutInflater.inflate(R.layout.color_box,null);
         builder.setView(view);
         final AlertDialog alertDialog   = builder.create();
+        color1=view.findViewById(R.id.color1);
+        color2=view.findViewById(R.id.color2);
+        color3=view.findViewById(R.id.color3);
+        color4=view.findViewById(R.id.color4);
+        color5=view.findViewById(R.id.color5);
+        color6=view.findViewById(R.id.color6);
+        color7=view.findViewById(R.id.color7);
+        color8=view.findViewById(R.id.color8);
+        color9=view.findViewById(R.id.color9);
+        color10=view.findViewById(R.id.color10);
+        color11=view.findViewById(R.id.color11);
+        color12=view.findViewById(R.id.color12);
+        color13=view.findViewById(R.id.color13);
+        color14=view.findViewById(R.id.color14);
+        color15=view.findViewById(R.id.color15);
+        color16=view.findViewById(R.id.color16);
+        color1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorStatus=1;
+            }
+        });
+        color2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorStatus=2;
+            }
+        });
+        color3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorStatus=3;
+            }
+        });
+        color4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorStatus=4;
+            }
+        });
+        color5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorStatus=5;
+            }
+        });
+        color6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorStatus=6;
+            }
+        });
+        color7.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorStatus=7;
+            }
+        });
+        color8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorStatus=8;
+            }
+        });
+        color9.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorStatus=9;
+            }
+        }); color10.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorStatus=10;
+            }
+        });
+        color11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorStatus=11;
+            }
+        });
+        color12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorStatus=12;
+            }
+        });
+        color13.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorStatus=13;
+            }
+        }); color14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorStatus=14;
+            }
+        }); color15.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorStatus=15;
+            }
+        }); color16.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                colorStatus=16;
+            }
+        });
+
+
+
+
+
+
+
+
+
 
 
 
