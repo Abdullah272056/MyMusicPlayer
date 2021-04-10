@@ -19,13 +19,18 @@
            android:layout_width="180dp"
            android:layout_height="50dp"/>
        <androidx.cardview.widget.CardView
-           android:backgroundTint="#FFEB3B"
            android:layout_gravity="center"
            android:layout_width="50dp"
            android:layout_height="50dp"
            app:cardCornerRadius="25dp"
 
-           />
+           >
+           <View
+               android:background="#FFFDFD"
+               android:id="@+id/selectColor"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"/>
+       </androidx.cardview.widget.CardView>
 
    </LinearLayout>
         
@@ -38,7 +43,7 @@
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/color1"
-                android:backgroundTint="#FDFFFF"
+                android:backgroundTint="@color/color1"
                 android:layout_gravity="center"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -54,7 +59,7 @@
                 android:layout_height="50dp"
                 app:cardCornerRadius="5dp"
                 android:layout_margin="5dp"
-                android:backgroundTint="#D1A72A"
+                android:backgroundTint="@color/color5"
                 />
 
         <androidx.cardview.widget.CardView
@@ -64,7 +69,7 @@
             android:layout_height="50dp"
             app:cardCornerRadius="5dp"
             android:layout_margin="5dp"
-            android:backgroundTint="#050505"
+            android:backgroundTint="@color/color9"
             />
 
 
@@ -75,7 +80,7 @@
             android:layout_height="50dp"
             app:cardCornerRadius="5dp"
             android:layout_margin="5dp"
-            android:backgroundTint="#932503"
+            android:backgroundTint="@color/color13"
             />
 
     </LinearLayout>
@@ -86,17 +91,16 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/color2"
-            android:backgroundTint="#D8DADA"
-            android:layout_gravity="center"
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            app:cardCornerRadius="5dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center"
             android:layout_margin="5dp"
-            />
+            android:backgroundTint="@color/color2"
+            app:cardCornerRadius="5dp" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/color6"
-            android:backgroundTint="#F8BB07"
+            android:backgroundTint="@color/color6"
             android:layout_gravity="center"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -108,7 +112,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/color10"
-            android:backgroundTint="#504F4F"
+            android:backgroundTint="@color/color10"
             android:layout_gravity="center"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -118,7 +122,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/color14"
-            android:backgroundTint="#FF5825"
+            android:backgroundTint="@color/color14"
             android:layout_gravity="center"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -135,7 +139,7 @@
         android:layout_height="wrap_content">
         <androidx.cardview.widget.CardView
             android:id="@+id/color3"
-            android:backgroundTint="#E91E63"
+            android:backgroundTint="@color/color3"
             android:layout_gravity="center"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -145,7 +149,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/color7"
-            android:backgroundTint="#9C27B0"
+            android:backgroundTint="@color/color7"
             android:layout_gravity="center"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -155,7 +159,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/color11"
-            android:backgroundTint="#2196F3"
+            android:backgroundTint="@color/color11"
             android:layout_gravity="center"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -165,7 +169,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/color15"
-            android:backgroundTint="#06AF0E"
+            android:backgroundTint="@color/color15"
             android:layout_gravity="center"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -181,7 +185,7 @@
         android:layout_height="wrap_content">
         <androidx.cardview.widget.CardView
             android:id="@+id/color4"
-            android:backgroundTint="#FA5D92"
+            android:backgroundTint="@color/color4"
             android:layout_gravity="center"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -191,7 +195,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/color8"
-            android:backgroundTint="#D95BEF"
+            android:backgroundTint="@color/color8"
             android:layout_gravity="center"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -201,7 +205,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/color12"
-            android:backgroundTint="#1CDCF4"
+            android:backgroundTint="@color/color12"
             android:layout_gravity="center"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -211,7 +215,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/color16"
-            android:backgroundTint="#0BF615"
+            android:backgroundTint="@color/color16"
             android:layout_gravity="center"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -235,6 +239,7 @@
             app:cardCornerRadius="5dp"
             >
             <Button
+                android:id="@+id/cancelButton"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_margin=".6dp"
                 android:background="#FFFFFF"
@@ -255,6 +260,7 @@
 
             >
             <Button
+                android:id="@+id/okButton"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:layout_margin=".6dp"
                 android:background="#FFFFFF"
