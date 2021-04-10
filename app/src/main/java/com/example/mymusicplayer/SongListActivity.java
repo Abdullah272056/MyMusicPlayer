@@ -132,15 +132,7 @@ public class SongListActivity extends AppCompatActivity {
         toolbar.setNavigationIcon(R.drawable.ic_baseline_menu_24);
 
 
-        int[][] states = new int[][] {
-                new int[] { android.R.attr.state_enabled}, // enabled
-        };
-        int[] colors = new int[] {
-                Color.BLACK,
-        };
-        ColorStateList myList = new ColorStateList(states, colors);
-        navigationView.setItemTextColor(myList);
-        navigationView.setItemIconTintList(myList);
+
 
 
         navigationView.setNavigationItemSelectedListener (new NavigationView.OnNavigationItemSelectedListener () {
@@ -536,79 +528,115 @@ public void setColor(){
     if (colorStatus==1){
         drawerLayout.setBackgroundColor(getResources().getColor(R.color.color1));
         navigationView.setBackgroundColor(getResources().getColor(R.color.color1));
-
-
+        int[][] states = new int[][] {
+                new int[] { android.R.attr.state_enabled}, // enabled
+        };
+        int[] colors = new int[] {
+                Color.BLACK,
+        };
+        ColorStateList myList = new ColorStateList(states, colors);
+        navigationView.setItemTextColor(myList);
+        navigationView.setItemIconTintList(myList);
     }
     else  if (colorStatus==2){
         drawerLayout.setBackgroundColor(getResources().getColor(R.color.color2));
         navigationView.setBackgroundColor(getResources().getColor(R.color.color2));
-
+        int[][] states = new int[][] {
+                new int[] { android.R.attr.state_enabled}, // enabled
+        };
+        int[] colors = new int[] {
+                Color.BLACK,
+        };
+        ColorStateList myList = new ColorStateList(states, colors);
+        navigationView.setItemTextColor(myList);
+        navigationView.setItemIconTintList(myList);
     }
     else  if (colorStatus==3){
         drawerLayout.setBackgroundColor(getResources().getColor(R.color.color3));
         navigationView.setBackgroundColor(getResources().getColor(R.color.color3));
+        texColorChange();
 
     }
     else  if (colorStatus==4){
         drawerLayout.setBackgroundColor(getResources().getColor(R.color.color4));
         navigationView.setBackgroundColor(getResources().getColor(R.color.color4));
 
+        texColorChange();
     }
     else  if (colorStatus==5){
         drawerLayout.setBackgroundColor(getResources().getColor(R.color.color5));
         navigationView.setBackgroundColor(getResources().getColor(R.color.color5));
-
+        texColorChange();
     }
     else  if (colorStatus==6){
         drawerLayout.setBackgroundColor(getResources().getColor(R.color.color6));
         navigationView.setBackgroundColor(getResources().getColor(R.color.color6));
-
+        texColorChange();
     }
     else  if (colorStatus==7){
         drawerLayout.setBackgroundColor(getResources().getColor(R.color.color7));
         navigationView.setBackgroundColor(getResources().getColor(R.color.color7));
-
+        texColorChange();
     }
     else  if (colorStatus==8){
         drawerLayout.setBackgroundColor(getResources().getColor(R.color.color8));
         navigationView.setBackgroundColor(getResources().getColor(R.color.color8));
-
+        texColorChange();
     }
     else  if (colorStatus==9){
         drawerLayout.setBackgroundColor(getResources().getColor(R.color.color9));
         navigationView.setBackgroundColor(getResources().getColor(R.color.color9));
+        texColorChange();
     }
     else  if (colorStatus==10){
         drawerLayout.setBackgroundColor(getResources().getColor(R.color.color10));
         navigationView.setBackgroundColor(getResources().getColor(R.color.color10));
+        texColorChange();
     }
     else  if (colorStatus==11){
         drawerLayout.setBackgroundColor(getResources().getColor(R.color.color11));
         navigationView.setBackgroundColor(getResources().getColor(R.color.color11));
+        texColorChange();
     }
     else  if (colorStatus==12){
         drawerLayout.setBackgroundColor(getResources().getColor(R.color.color12));
         navigationView.setBackgroundColor(getResources().getColor(R.color.color12));
+        texColorChange();
     }
     else  if (colorStatus==13){
         drawerLayout.setBackgroundColor(getResources().getColor(R.color.color13));
         navigationView.setBackgroundColor(getResources().getColor(R.color.color13));
+        texColorChange();
     }
     else  if (colorStatus==14){
         drawerLayout.setBackgroundColor(getResources().getColor(R.color.color14));
         navigationView.setBackgroundColor(getResources().getColor(R.color.color14));
+        texColorChange();
     }
     else  if (colorStatus==15){
         drawerLayout.setBackgroundColor(getResources().getColor(R.color.color15));
         navigationView.setBackgroundColor(getResources().getColor(R.color.color15));
+        texColorChange();
     }
     else  if (colorStatus==16){
         drawerLayout.setBackgroundColor(getResources().getColor(R.color.color16));
         navigationView.setBackgroundColor(getResources().getColor(R.color.color16));
+        texColorChange();
     }
 
 
 }
+        void texColorChange(){
+            int[][] states = new int[][] {
+                    new int[] { android.R.attr.state_enabled}, // enabled
+            };
+            int[] colors = new int[] {
+                    Color.WHITE,
+            };
+            ColorStateList myList = new ColorStateList(states, colors);
+            navigationView.setItemTextColor(myList);
+            navigationView.setItemIconTintList(myList);
+        }
 
     public void CustomAdapterForColorChange1(){
 //        AlertDialog.Builder builder     =new AlertDialog.Builder(SongListActivity.this);
