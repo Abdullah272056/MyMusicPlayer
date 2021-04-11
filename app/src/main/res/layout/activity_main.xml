@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:background="#111"
+    android:id="@+id/linearLayoutId"
+    android:background="#FFFFFF"
     android:gravity="center"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -154,7 +155,6 @@
                 android:layout_height="wrap_content"
                 >
                 <TextView
-
                     android:gravity="center"
                     android:ellipsize="marquee"
                     android:marqueeRepeatLimit="marquee_forever"

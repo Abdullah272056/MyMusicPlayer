@@ -521,7 +521,7 @@ public class SongListActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-public void setColor(){
+ void setColor(){
     themeStatusData  = new ArrayList<>();
     themeStatusData = themeDataBaseHelper.getAllNotes();
     colorStatus =themeStatusData.get(0).getThemeStatus();

@@ -10,8 +10,10 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.ContentUris;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
@@ -28,11 +30,14 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.mymusicplayer.theme.ThemeDataBaseHelper;
+import com.example.mymusicplayer.theme.ThemeNote;
 import com.gauravk.audiovisualizer.visualizer.BarVisualizer;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
@@ -49,7 +54,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+LinearLayout linearLayout;
     ListView listView;
     ArrayList<File> arrayList1;
 
@@ -96,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
+        linearLayout=findViewById(R.id.linearLayoutId);
         listView=findViewById(R.id.listView);
         btnPlay=findViewById(R.id.playButtonId);
         btnNext=findViewById(R.id.nextButtonId);
@@ -111,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
         seekMusic=findViewById(R.id.seekBarId);
         visualizer=findViewById(R.id.blast);
-
+        setColor();
 
         arrayList1=new ArrayList<>();
        // runTimePermission();
@@ -140,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
        UpdateSeekBar();
         runNextSon();
+
 
 //        //seekMusic set Listener
 //        seekMusic.setOnProgressChangedListener(new ProgressListener() {
@@ -366,5 +373,66 @@ public class MainActivity extends AppCompatActivity {
                 handler2.postDelayed(this,delay1);
             }
         },delay1);
+    }
+
+    void setColor(){
+         int colorStatus;
+      ThemeDataBaseHelper  themeDataBaseHelper=new ThemeDataBaseHelper(MainActivity.this);
+        themeDataBaseHelper.getWritableDatabase();
+        List<ThemeNote> themeStatusData  = new ArrayList<>();
+        themeStatusData = themeDataBaseHelper.getAllNotes();
+        colorStatus =themeStatusData.get(0).getThemeStatus();
+        if (colorStatus==1){
+            linearLayout.setBackgroundColor(getResources().getColor(R.color.color1));
+        }
+        else  if (colorStatus==2){
+            linearLayout.setBackgroundColor(getResources().getColor(R.color.color2));
+
+        }
+        else  if (colorStatus==3){
+            linearLayout.setBackgroundColor(getResources().getColor(R.color.color3));
+
+        }
+        else  if (colorStatus==4){
+            linearLayout.setBackgroundColor(getResources().getColor(R.color.color4));
+        }
+        else  if (colorStatus==5){
+            linearLayout.setBackgroundColor(getResources().getColor(R.color.color5));
+        }
+        else  if (colorStatus==6) {
+            linearLayout.setBackgroundColor(getResources().getColor(R.color.color6));
+        }
+        else  if (colorStatus==7){
+            linearLayout.setBackgroundColor(getResources().getColor(R.color.color7));
+        }
+        else  if (colorStatus==8){
+            linearLayout.setBackgroundColor(getResources().getColor(R.color.color8));
+        }
+        else  if (colorStatus==9){
+            linearLayout.setBackgroundColor(getResources().getColor(R.color.color9));
+        }
+        else  if (colorStatus==10){
+            linearLayout.setBackgroundColor(getResources().getColor(R.color.color10));
+        }
+        else  if (colorStatus==11){
+            linearLayout.setBackgroundColor(getResources().getColor(R.color.color11));
+        }
+        else  if (colorStatus==12){
+            linearLayout.setBackgroundColor(getResources().getColor(R.color.color12));
+        }
+        else  if (colorStatus==13){
+            linearLayout.setBackgroundColor(getResources().getColor(R.color.color13));
+        }
+        else  if (colorStatus==14){
+            linearLayout.setBackgroundColor(getResources().getColor(R.color.color14));
+        }
+        else  if (colorStatus==15){
+            linearLayout.setBackgroundColor(getResources().getColor(R.color.color15));
+        }
+        else  if (colorStatus==16){
+            linearLayout.setBackgroundColor(getResources().getColor(R.color.color16));
+        }
+
+
     }
 }
