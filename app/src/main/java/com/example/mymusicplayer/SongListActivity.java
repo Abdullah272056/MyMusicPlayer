@@ -84,7 +84,6 @@ public class SongListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_song_list);
         toolbar=findViewById (R.id.toolbarId);
         drawerLayout=findViewById (R.id.drawerLayoutId);
-
         if (toolbar!=null){
             setSupportActionBar (toolbar);
         }

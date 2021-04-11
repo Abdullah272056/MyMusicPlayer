@@ -10,6 +10,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <include layout="@layout/my_toolbar"
+        android:id="@+id/toolbar"
+        />
 
         <LinearLayout
             android:gravity="center"

@@ -2,6 +2,7 @@ package com.example.mymusicplayer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 
 import android.Manifest;
@@ -75,6 +76,7 @@ LinearLayout linearLayout;
     ArrayList<File> mySongs;
 
     Thread updateSeekBar;
+   Toolbar toolbar;
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -96,10 +98,16 @@ LinearLayout linearLayout;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().setTitle("Now Playing");
+        toolbar=findViewById (R.id.toolbar);
+
+        if (toolbar!=null){
+            setSupportActionBar(toolbar);
+        }
+
+        //getSupportActionBar().setTitle("Now Playing");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
+        toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24);
 
         linearLayout=findViewById(R.id.linearLayoutId);
         listView=findViewById(R.id.listView);
