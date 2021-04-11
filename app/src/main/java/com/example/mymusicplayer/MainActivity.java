@@ -384,7 +384,7 @@ LinearLayout linearLayout;
     }
 
     void setColor(){
-         int colorStatus;
+      int colorStatus;
       ThemeDataBaseHelper  themeDataBaseHelper=new ThemeDataBaseHelper(MainActivity.this);
         themeDataBaseHelper.getWritableDatabase();
         List<ThemeNote> themeStatusData  = new ArrayList<>();
@@ -392,6 +392,10 @@ LinearLayout linearLayout;
         colorStatus =themeStatusData.get(0).getThemeStatus();
         if (colorStatus==1){
             linearLayout.setBackgroundColor(getResources().getColor(R.color.color1));
+           txtSName.setTextColor(getResources().getColor(R.color.color9));
+           txtSStart.setTextColor(getResources().getColor(R.color.color9));
+           txtSStop.setTextColor(getResources().getColor(R.color.color9));
+          visualizer.setColor(getResources().getColor(R.color.color7));
         }
         else  if (colorStatus==2){
             linearLayout.setBackgroundColor(getResources().getColor(R.color.color2));
@@ -412,9 +416,11 @@ LinearLayout linearLayout;
         }
         else  if (colorStatus==7){
             linearLayout.setBackgroundColor(getResources().getColor(R.color.color7));
+            visualizer.setColor(getResources().getColor(R.color.color11));
         }
         else  if (colorStatus==8){
             linearLayout.setBackgroundColor(getResources().getColor(R.color.color8));
+            visualizer.setColor(getResources().getColor(R.color.color11));
         }
         else  if (colorStatus==9){
             linearLayout.setBackgroundColor(getResources().getColor(R.color.color9));
