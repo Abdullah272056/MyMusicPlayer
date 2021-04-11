@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     android:id="@+id/linearLayoutId"
-    android:background="#FFFFFF"
+    android:background="#4E4C4C"
     android:gravity="center"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -42,6 +42,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <TextView
+                                android:textColor="#FFFFFF"
                                 android:id="@+id/sonStartTimeTextViewId"
                                 android:text="0:00"
                                 android:layout_weight="1"
@@ -49,6 +50,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"/>
                             <TextView
+                                android:textColor="#FFFFFF"
                                 android:id="@+id/songStopTextViewId"
                                 android:text="0:00"
                                 android:layout_weight="1"
@@ -107,7 +109,7 @@
 
                     </RelativeLayout>
                     <LinearLayout
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="10dp"
                         android:layout_alignParentBottom="true"
                         android:weightSum="2"
                         android:orientation="horizontal"
@@ -118,28 +120,47 @@
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content">
-                            <ImageButton
 
+                            <androidx.cardview.widget.CardView
+                                android:layout_gravity="center"
+                                android:layout_width="50dp"
+                                android:layout_height="40dp"
+                                app:cardCornerRadius="20dp"
+                                android:layout_margin="10dp"
+                                ><ImageButton
                                 android:background="#EDECEC"
                                 android:layout_width="50dp"
                                 android:layout_height="40dp"
                                 android:src="@drawable/ic_baseline_fast_rewind_24"
                                 android:id="@+id/FRButtonId"
                                 />
+
+                            </androidx.cardview.widget.CardView>
+
                         </LinearLayout>
                         <LinearLayout
                             android:gravity="right"
                             android:layout_weight="1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content">
-                            <ImageButton
-
-                                android:background="#EDECEC"
+                            <androidx.cardview.widget.CardView
+                                android:layout_gravity="center"
                                 android:layout_width="50dp"
                                 android:layout_height="40dp"
-                                android:src="@drawable/ic_baseline_fast_forward_24"
-                                android:id="@+id/FFButtonId"
-                                />
+                                app:cardCornerRadius="20dp"
+                                android:layout_margin="10dp"
+                                >
+                                <ImageButton
+
+                                    android:background="#EDECEC"
+                                    android:layout_width="50dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/ic_baseline_fast_forward_24"
+                                    android:id="@+id/FFButtonId"
+                                    />
+
+                            </androidx.cardview.widget.CardView>
+
 
                         </LinearLayout>
 
@@ -158,6 +179,7 @@
                 android:layout_height="wrap_content"
                 >
                 <TextView
+                    android:textColor="#FFFFFF"
                     android:gravity="center"
                     android:ellipsize="marquee"
                     android:marqueeRepeatLimit="marquee_forever"
@@ -240,6 +262,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:textColor="#FFFFFF"
                     android:textAlignment="center"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -271,7 +294,6 @@
 <!--                android:padding="8dp" />-->
 
             <com.gauravk.audiovisualizer.visualizer.BarVisualizer
-
                 android:layout_marginTop="40dp"
                 xmlns:custom="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/blast"
@@ -280,7 +302,7 @@
                 custom:avDensity="0.5"
                 custom:avType="outline"
                 custom:avWidth="4dp"
-                custom:avColor="#9C27B0"
+                custom:avColor="#FFFFFF"
                 android:layout_alignParentBottom="true"
                 custom:avSpeed="normal"/>
         </LinearLayout>
