@@ -7,6 +7,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -14,6 +16,7 @@ import android.Manifest;
 import android.content.ContentUris;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -57,6 +60,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SongListActivity extends AppCompatActivity {
+    private static final int MY_PERMISSIONS_REQUEST_LOCATION = 99 ;
     String[]items;
     ListView listView;
     ArrayList<File> arrayList1;
@@ -89,8 +93,10 @@ public class SongListActivity extends AppCompatActivity {
         }
 
 
+
         listView=findViewById(R.id.listView);
         arrayList1=new ArrayList<>();
+
         runTimePermission();
         navigationView=findViewById (R.id.myNavigationViewId);
 
@@ -166,18 +172,32 @@ public class SongListActivity extends AppCompatActivity {
     }
 
     public void runTimePermission(){
-        Dexter.withContext(SongListActivity.this).withPermissions(Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.RECORD_AUDIO)
-                .withListener(new MultiplePermissionsListener() {
-                    @Override
-                    public void onPermissionsChecked(MultiplePermissionsReport multiplePermissionsReport) {
-                        displaySong();
-                    }
-                    @Override
-                    public void onPermissionRationaleShouldBeShown(List<PermissionRequest> list, PermissionToken permissionToken) {
-                        permissionToken.continuePermissionRequest();
-                    }
-                }).check();
+
+            Dexter.withContext(SongListActivity.this).withPermissions(Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.RECORD_AUDIO)
+                    .withListener(new MultiplePermissionsListener() {
+                        @Override
+                        public void onPermissionsChecked(MultiplePermissionsReport multiplePermissionsReport) {
+                            if(multiplePermissionsReport.areAllPermissionsGranted()){
+                                    displaySong();
+                            }else {
+                              //  runTimePermission();
+                                Toast.makeText(SongListActivity.this, "Please check permission ", Toast.LENGTH_LONG).show();
+                            }
+
+
+                        }
+                        @Override
+                        public void onPermissionRationaleShouldBeShown(List<PermissionRequest> list, PermissionToken permissionToken) {
+                            permissionToken.continuePermissionRequest();
+                        }
+                    }).check();
+
+
     }
+
+
+
+
 
 
     ArrayList<File> findSong(File file){
@@ -205,23 +225,28 @@ public class SongListActivity extends AppCompatActivity {
             }
         }
 
-        SongListActivity.CustomAdapter customAdapter=new SongListActivity.CustomAdapter();
-        listView.setAdapter(customAdapter);
+        if (items.length>0){
+            SongListActivity.CustomAdapter customAdapter=new SongListActivity.CustomAdapter();
+            listView.setAdapter(customAdapter);
+        }
+        else {
+            Toast.makeText(this, "item is not found", Toast.LENGTH_SHORT).show();
+        }
+
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
                 String songName= (String) listView.getItemAtPosition(position);
-
                 startActivity(new Intent(SongListActivity.this,MainActivity.class)
                         .putExtra("songs",mySongs)
                         .putExtra("songName",songName)
                         .putExtra("pos",position));
-
             }
         });
     }
+
+
     class CustomAdapter extends BaseAdapter {
 
         ArrayList<File> mySongs=findSong(Environment.getExternalStorageDirectory());
@@ -636,6 +661,7 @@ public class SongListActivity extends AppCompatActivity {
             navigationView.setItemTextColor(myList);
             navigationView.setItemIconTintList(myList);
         }
+        ////
 
 
 }
