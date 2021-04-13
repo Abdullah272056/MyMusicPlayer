@@ -197,9 +197,6 @@ public class SongListActivity extends AppCompatActivity {
 
 
 
-
-
-
     ArrayList<File> findSong(File file){
         ArrayList<File>  arrayList=new ArrayList<>();
         File[] files=file.listFiles();
